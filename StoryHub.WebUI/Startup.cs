@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StoryHub.BL.Db_Context;
+using StoryHub.BL.Models;
 using StoryHub.BL.Services;
 using StoryHub.BL.Services.Abstract;
 using StoryHub.Infrastructure.Util;
@@ -33,11 +34,13 @@ namespace StoryHub.WebUI
             services.AddMvc();
 
 
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                    Configuration.GetConnectionString("StoryHubDb")));
+
+            services.AddDefaultIdentity<Storyteller>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddEntityFrameworkStores<AppDbContext>();
+            
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
