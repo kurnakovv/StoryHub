@@ -14,7 +14,7 @@ namespace StoryHub.BL.Services
 
         public IEnumerable<Storyteller> GetAllStorytellers() => _appDbContext.Storytellers.ToList();
 
-        public Guid CreateStoryteller(Storyteller storyteller)
+        public string CreateStoryteller(Storyteller storyteller)
         {
             if (_appDbContext.Storytellers.Contains(storyteller))
                 throw new Exception("The entity is has already");
@@ -25,7 +25,7 @@ namespace StoryHub.BL.Services
             return storyteller.Id;
         }
 
-        public void DeleteStorytellerById(Guid id)
+        public void DeleteStorytellerById(string id)
         {
             if (id != null)
             {
@@ -38,9 +38,9 @@ namespace StoryHub.BL.Services
             }
         }
 
-        public Storyteller GetStorytellerById(Guid id)
+        public Storyteller GetStorytellerById(string id)
         {
-            if (id != Guid.Empty)
+            if (id != null)
             {
                 Storyteller storyteller = FindStorytellerById(id);
                 return storyteller;
@@ -61,7 +61,7 @@ namespace StoryHub.BL.Services
             throw new Exception("Storyteller cannot be empty");
         }
 
-        public Storyteller FindStorytellerById(Guid id) => _appDbContext.Storytellers.Find(id);
+        public Storyteller FindStorytellerById(string id) => _appDbContext.Storytellers.Find(id);
 
         public void AddSubscriber() { }
 

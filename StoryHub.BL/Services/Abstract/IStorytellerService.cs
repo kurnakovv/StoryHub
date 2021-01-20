@@ -7,7 +7,7 @@ namespace StoryHub.BL.Services.Abstract
     public interface IStorytellerService
     {
         IEnumerable<Storyteller> GetAllStorytellers();
-        Storyteller FindStorytellerById(Guid id);
+        Storyteller FindStorytellerById(string id);
         void AddSubscriber();
     }
 }

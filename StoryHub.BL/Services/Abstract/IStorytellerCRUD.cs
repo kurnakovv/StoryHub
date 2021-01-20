@@ -5,9 +5,9 @@ namespace StoryHub.BL.Services.Abstract
 {
     public interface IStorytellerCRUD
     {
-        Guid CreateStoryteller(Storyteller storyteller);
-        Storyteller GetStorytellerById(Guid id);
+        string CreateStoryteller(Storyteller storyteller);
+        Storyteller GetStorytellerById(string id);
         Storyteller UpdateStoryteller(Storyteller storyteller);
-        void DeleteStorytellerById(Guid id);
+        void DeleteStorytellerById(string id);
     }
 }

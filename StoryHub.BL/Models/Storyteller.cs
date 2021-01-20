@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace StoryHub.BL.Models
 {
-    public class Storyteller : IdentityUser<Guid>
+    public class Storyteller : IdentityUser
     {
         [Required(ErrorMessage = "Enter your name!")]
         [StringLength(30, MinimumLength = 3, ErrorMessage = "The name cannot be more than 30 characters")]

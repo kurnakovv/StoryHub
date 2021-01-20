@@ -18,7 +18,7 @@ namespace StoryHub.Tests.BL.Services
             {
                 new Storyteller
                 {
-                    Id = Guid.Parse("5050241f-a600-4d64-8634-0de904c043c1"),
+                    Id = "5050241f-a600-4d64-8634-0de904c043c1",
                     AccessFailedCount = 0,
                     EmailConfirmed = false,
                     PhoneNumberConfirmed = false,
@@ -36,7 +36,7 @@ namespace StoryHub.Tests.BL.Services
                 },
                 new Storyteller
                 {
-                    Id = Guid.Parse("5050241f-a600-4d64-8634-0de904c043c2"),
+                    Id = "5050241f-a600-4d64-8634-0de904c043c1",
                     AccessFailedCount = 0,
                     EmailConfirmed = false,
                     PhoneNumberConfirmed = false,
@@ -67,7 +67,7 @@ namespace StoryHub.Tests.BL.Services
 
             Storyteller storyteller = new Storyteller("Name", 1, true, "img.png", "About", 18)
             {
-                Id = Guid.Parse("5050241f-a600-4d64-8634-0de904c043c1"),
+                Id = "5050241f-a600-4d64-8634-0de904c043c1",
                 AccessFailedCount = 0,
                 EmailConfirmed = false,
                 PhoneNumberConfirmed = false,
@@ -101,7 +101,7 @@ namespace StoryHub.Tests.BL.Services
         {
             Storyteller storyteller = new Storyteller("Name", 1, true, "img.png", "About", 18)
             {
-                Id = Guid.Parse("5050241f-a600-4d64-8634-0de904c043c1"),
+                Id = "5050241f-a600-4d64-8634-0de904c043c1",
                 AccessFailedCount = 0,
                 EmailConfirmed = false,
                 PhoneNumberConfirmed = false,
@@ -132,7 +132,7 @@ namespace StoryHub.Tests.BL.Services
         {
             Storyteller storyteller = new Storyteller("Name", 0, true, "img.png", "About", 18)
             {
-                Id = Guid.Parse("5050241f-a600-4d64-8634-0de904c043c1"),
+                Id = "5050241f-a600-4d64-8634-0de904c043c1",
                 AccessFailedCount = 0,
                 EmailConfirmed = false,
                 PhoneNumberConfirmed = false,
@@ -161,7 +161,7 @@ namespace StoryHub.Tests.BL.Services
         {
             Storyteller storyteller = new Storyteller("Name", 0, true, "img.png", "About", 18)
             {
-                Id = Guid.Parse("5050241f-a600-4d64-8634-0de904c043c1"),
+                Id = "5050241f-a600-4d64-8634-0de904c043c1",
                 AccessFailedCount = 0,
                 EmailConfirmed = false,
                 PhoneNumberConfirmed = false,
@@ -195,7 +195,7 @@ namespace StoryHub.Tests.BL.Services
         {
             Storyteller storyteller = new Storyteller("Name", 0, true, "img.png", "About", 18)
             {
-                Id = Guid.Empty,
+                Id = null,
                 AccessFailedCount = 0,
                 EmailConfirmed = false,
                 PhoneNumberConfirmed = false,
@@ -222,7 +222,7 @@ namespace StoryHub.Tests.BL.Services
         {
             Storyteller storyteller = new Storyteller("Name", 0, true, "img.png", "About", 18)
             {
-                Id = Guid.Parse("5050241f-a600-4d64-8634-0de904c043c1"),
+                Id = "5050241f-a600-4d64-8634-0de904c043c1",
                 AccessFailedCount = 0,
                 EmailConfirmed = false,
                 PhoneNumberConfirmed = false,
@@ -266,7 +266,7 @@ namespace StoryHub.Tests.BL.Services
         {
             Storyteller storyteller = new Storyteller("Name", 0, true, "img.png", "About", 18)
             {
-                Id = Guid.Parse("5050241f-a600-4d64-8634-0de904c043c1"),
+                Id = "5050241f-a600-4d64-8634-0de904c043c1",
                 AccessFailedCount = 0,
                 EmailConfirmed = false,
                 PhoneNumberConfirmed = false,
