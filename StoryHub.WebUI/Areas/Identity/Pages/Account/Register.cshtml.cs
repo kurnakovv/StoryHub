@@ -1,19 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using StoryHub.BL.Models;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.IO;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Text.Encodings.Web;
+using System.Threading.Tasks;
 
 namespace StoryHub.WebUI.Areas.Identity.Pages.Account
 {
@@ -24,17 +29,20 @@ namespace StoryHub.WebUI.Areas.Identity.Pages.Account
         private readonly UserManager<Storyteller> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IHostEnvironment _environment;
 
         public RegisterModel(
             UserManager<Storyteller> userManager,
             SignInManager<Storyteller> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IHostEnvironment environment)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _environment = environment;
         }
 
         [BindProperty]
@@ -54,6 +62,20 @@ namespace StoryHub.WebUI.Areas.Identity.Pages.Account
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
+
+            [Display(Name = "Profile image (unrequired)")]
+            public string Image { get; set; }
+
+            public bool Gender { get; set; }
+
+            [Required]
+            [Range(1, 100, ErrorMessage = "Enter valid age (1 - 100)")]
+            [DefaultValue(18)]
+            public int Age { get; set; }
+
+            [Display(Name = "Information about you")]
+            [StringLength(50, ErrorMessage = "Information about you cannot be more than 30 characters")]
+            public string About { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -79,10 +101,11 @@ namespace StoryHub.WebUI.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new Storyteller(Input.Name, 0, false, "", "", 18)
+                string imageName = AddImage();
+                var user = new Storyteller(Input.Name, 0, Input.Gender, imageName, Input.About, Input.Age)
                 {
                     UserName = Input.Name,
-                    Email = Input.Email 
+                    Email = Input.Email
                 };
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
@@ -119,6 +142,50 @@ namespace StoryHub.WebUI.Areas.Identity.Pages.Account
 
             // If we got this far, something failed, redisplay form
             return Page();
+        }
+
+        private string AddImage()
+        {
+            const string defaultImage = "defaultImageStoryteller.jpg";
+            var newImageName = string.Empty;
+            var imgExtensions = new List<string> { ".jpg", ".png", ".jpeg", ".gif"};
+
+            if (HttpContext.Request.Form.Files != null)
+            {
+                var imageName = string.Empty;
+
+                var files = HttpContext.Request.Form.Files;
+
+                foreach (IFormFile file in files)
+                {
+                    if (file.Length > 0)
+                    {
+                        imageName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                        var fileExtension = Path.GetExtension(imageName);
+
+                        if (imgExtensions.Contains(fileExtension))
+                        {
+                            //Assigning Unique Filename (Guid)
+                            var uniqueFileName = Convert.ToString(Guid.NewGuid());
+
+                            newImageName = uniqueFileName + fileExtension;
+
+                            // Path
+                            imageName = Path.Combine(_environment.ContentRootPath, "wwwroot\\imagesStorytellers") + $@"\{newImageName}";
+
+                            using (FileStream fs = System.IO.File.Create(imageName))
+                            {
+                                file.CopyTo(fs);
+                                fs.Flush();
+                            }
+
+                            return newImageName;
+                        }
+                    }
+                }
+            }
+
+            return defaultImage;
         }
     }
 }

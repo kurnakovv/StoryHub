@@ -8,7 +8,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
             <h4>Create a new account.</h4>
             <hr />
             <div asp-validation-summary="All" class="text-danger"></div>
@@ -31,6 +31,32 @@
                 <label asp-for="Input.ConfirmPassword"></label>
                 <input asp-for="Input.ConfirmPassword" class="form-control" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.About"></label>
+                <input asp-for="Input.About" class="form-control" />
+                <span asp-validation-for="Input.About" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Gender"></label>
+                <input asp-for="Input.Gender" class="form-control" />
+                <span asp-validation-for="Input.Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Age"></label>
+                <input asp-for="Input.Age" class="form-control" />
+                <span asp-validation-for="Input.Age" class="text-danger"></span>
+            </div>
+            <div>
+                <dl>
+                    <dt>
+                        <label asp-for="Input.Image"></label>
+                    </dt>
+                    <dd>
+                        <input asp-for="Input.Image" type="file" name="files">
+                        <span asp-validation-for="Input.Image"></span>
+                    </dd>
+                </dl>
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
