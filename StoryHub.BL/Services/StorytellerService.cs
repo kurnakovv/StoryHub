@@ -53,9 +53,13 @@ namespace StoryHub.BL.Services
         {
             if (storyteller != null)
             {
-                _appDbContext.Entry(storyteller).State = EntityState.Modified;
-                Save();
-                return storyteller;
+                var entry = FindStorytellerById(storyteller.Id);
+                if (entry != null)
+                {
+                    _appDbContext.Entry(entry).CurrentValues.SetValues(storyteller);
+                    Save();
+                    return storyteller;
+                }
             }
 
             throw new Exception("Storyteller cannot be empty");
