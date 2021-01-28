@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Storyteller>
+
+@{
+    ViewData["Title"] = "Storytellers list";
+}
+
+<div id="modDialog" class="modal fade">
+    <div id="dialogContent" class="modal-dialog"></div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Email)</th>
+        <th>@Html.DisplayNameFor(model => model.UserName)</th>
+        <th>@Html.DisplayNameFor(model => model.Image)</th>
+        <th>Manager panel</th>
+    </tr>
+    @foreach(Storyteller storyteller in Model)
+    {
+        <tr>
+            <td>@storyteller.Email</td>
+            <td>@storyteller.UserName</td>
+            <td>
+                <img style="width:100px;height:100px;" src="~/imagesStorytellers/@storyteller.Image" />
+            </td>
+            <td>
+                <a class="btn btn-success" asp-action="UpdateStoryteller" asp-route-id="@storyteller.Id">Edit</a>
+                <a class="btn btn-danger deleteBtn" asp-action="DeleteStoryteller" asp-route-id="@storyteller.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+
+@section scripts{ 
+
+    <script>
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $(".deleteBtn").click(function (e) {
+
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#dialogContent').html(data);
+                    $('#modDialog').modal('show');
+                });
+            });
+        })
+    </script>
+}
