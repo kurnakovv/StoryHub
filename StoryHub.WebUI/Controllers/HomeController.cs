@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using StoryHub.BL.Models;
 using StoryHub.BL.Services.Abstract;
 using StoryHub.WebUI.Models;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace StoryHub.WebUI.Controllers
@@ -21,9 +24,26 @@ namespace StoryHub.WebUI.Controllers
             _storytellerCRUD = storytellerCRUD;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string search)
         {
-            var model = _storytellerService.GetAllStorytellers();
+            IEnumerable<Storyteller> model;
+
+            if (string.IsNullOrWhiteSpace(search))
+            {
+                model = _storytellerService.GetAllStorytellers();
+            }
+            else
+            {
+                try
+                {
+                    model = _storytellerService.FindStorytellersByUserName(search);
+                }
+                catch (Exception ex)
+                {
+                    return NotFound(ex.Message);
+                }
+            }
+
             return View(model);
         }
 

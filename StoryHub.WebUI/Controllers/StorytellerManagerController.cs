@@ -2,6 +2,9 @@
 using StoryHub.BL.Models;
 using StoryHub.BL.Services.Abstract;
 using StoryHub.WebUI.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace StoryHub.WebUI.Controllers
 {
@@ -17,9 +20,25 @@ namespace StoryHub.WebUI.Controllers
             _storytellerCRUD = storytellerCRUD;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string search)
         {
-            var storytellers = _storytellerService.GetAllStorytellers();
+            IEnumerable<Storyteller> storytellers;
+            if(string.IsNullOrWhiteSpace(search))
+            {
+                storytellers = _storytellerService.GetAllStorytellers();
+            }
+            else
+            {
+                try
+                {
+                    storytellers = _storytellerService.FindStorytellersByUserName(search);
+                } 
+                catch (Exception ex)
+                {
+                    return NotFound(ex.Message);
+                }
+            }
+
             return View(storytellers);
         }
 

@@ -4,18 +4,25 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h1 class="display-4">Welcome</h1>
-<div class="row">
+<form asp-controller="Home" asp-action="Index" method="get">
+    <div id="searchInput">
+        <input type="text" name="search" />
+        <input type="submit" value="Search" />
+    </div>
 
-    @foreach (Storyteller item in Model)
-    {
-        <div class="col-md-4">
-            <a2>
-                @item.Name
-                <img src="~/imagesStorytellers/@Url.Content(item.Image)" style="width:150px; height:150px;" />
+    <h1 class="display-4">Welcome</h1>
+    <div class="row">
 
-            </a2><br />
-        </div>
-    }
+        @foreach (Storyteller item in Model)
+        {
+            <div class="col-md-4">
+                <a2>
+                    @item.Name
+                    <img src="~/imagesStorytellers/@Url.Content(item.Image)" style="width:150px; height:150px;" />
 
-</div>
+                </a2><br />
+            </div>
+        }
+
+    </div>
+</form>

@@ -8,31 +8,36 @@
     <div id="dialogContent" class="modal-dialog"></div>
 </div>
 
-<table class="table">
-    <tr>
-        <th>@Html.DisplayNameFor(model => model.Email)</th>
-        <th>@Html.DisplayNameFor(model => model.UserName)</th>
-        <th>@Html.DisplayNameFor(model => model.Image)</th>
-        <th>Manager panel</th>
-    </tr>
-    @foreach(Storyteller storyteller in Model)
-    {
+<form asp-controller="StorytellerManager" asp-action="Index" method="get">
+    <div id="searchInput">
+        <input type="text" name="search" />
+        <input type="submit" value="Search" />
+    </div>
+    <table class="table">
         <tr>
-            <td>@storyteller.Email</td>
-            <td>@storyteller.UserName</td>
-            <td>
-                <img style="width:100px;height:100px;" src="~/imagesStorytellers/@storyteller.Image" />
-            </td>
-            <td>
-                <a class="btn btn-success" asp-action="UpdateStoryteller" asp-route-id="@storyteller.Id">Edit</a>
-                <a class="btn btn-danger deleteBtn" asp-action="DeleteStoryteller" asp-route-id="@storyteller.Id">Delete</a>
-            </td>
+            <th>@Html.DisplayNameFor(model => model.Email)</th>
+            <th>@Html.DisplayNameFor(model => model.UserName)</th>
+            <th>@Html.DisplayNameFor(model => model.Image)</th>
+            <th>Manager panel</th>
         </tr>
-    }
-</table>
+        @foreach (Storyteller storyteller in Model)
+        {
+            <tr>
+                <td>@storyteller.Email</td>
+                <td>@storyteller.UserName</td>
+                <td>
+                    <img style="width:100px;height:100px;" src="~/imagesStorytellers/@storyteller.Image" />
+                </td>
+                <td>
+                    <a class="btn btn-success" asp-action="UpdateStoryteller" asp-route-id="@storyteller.Id">Edit</a>
+                    <a class="btn btn-danger deleteBtn" asp-action="DeleteStoryteller" asp-route-id="@storyteller.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+</form>
 
-
-@section scripts{ 
+@section scripts{
 
     <script>
         $(function () {
