@@ -6,6 +6,7 @@ using StoryHub.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace StoryHub.WebUI.Controllers
 {
@@ -24,13 +25,13 @@ namespace StoryHub.WebUI.Controllers
             _storytellerCRUD = storytellerCRUD;
         }
 
-        public IActionResult Index(string search)
+        public async Task<IActionResult> Index(string search)
         {
             IEnumerable<Storyteller> model;
 
             if (string.IsNullOrWhiteSpace(search))
             {
-                model = _storytellerService.GetAllStorytellers();
+                model = await _storytellerService.GetAllStorytellers();
             }
             else
             {

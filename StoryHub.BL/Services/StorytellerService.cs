@@ -5,6 +5,7 @@ using StoryHub.BL.Services.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace StoryHub.BL.Services
 {
@@ -12,20 +13,21 @@ namespace StoryHub.BL.Services
     {
         private readonly AppDbContext _appDbContext = new AppDbContext();
 
-        public IEnumerable<Storyteller> GetAllStorytellers() => _appDbContext.Storytellers.ToList();
+        public async Task<IEnumerable<Storyteller>> GetAllStorytellers() 
+            => await _appDbContext.Storytellers.ToListAsync();
 
-        public string CreateStoryteller(Storyteller storyteller)
+        public async Task<string> CreateStoryteller(Storyteller storyteller)
         {
             if (_appDbContext.Storytellers.Contains(storyteller))
                 throw new Exception("The entity is has already");
 
 
             _appDbContext.Storytellers.Add(storyteller);
-            Save();
+            await Save();
             return storyteller.Id;
         }
 
-        public void DeleteStorytellerById(string id)
+        public async Task DeleteStorytellerById(string id)
         {
             if (id != null)
             {
@@ -33,7 +35,7 @@ namespace StoryHub.BL.Services
                 if (storyteller != null)
                 {
                     _appDbContext.Storytellers.Remove(storyteller);
-                    Save();
+                    await Save();
                 }
             }
         }
@@ -49,7 +51,7 @@ namespace StoryHub.BL.Services
             throw new KeyNotFoundException("Storyteller not found by id");
         }
 
-        public Storyteller UpdateStoryteller(Storyteller storyteller)
+        public async Task<Storyteller> UpdateStoryteller(Storyteller storyteller)
         {
             if (storyteller != null)
             {
@@ -57,7 +59,7 @@ namespace StoryHub.BL.Services
                 if (entry != null)
                 {
                     _appDbContext.Entry(entry).CurrentValues.SetValues(storyteller);
-                    Save();
+                    await Save();
                     return storyteller;
                 }
             }
@@ -79,10 +81,10 @@ namespace StoryHub.BL.Services
 
         public void AddSubscriber() { }
 
-        private void Save()
+        private async Task Save()
         {
-            _appDbContext.SaveChanges();
-            _appDbContext.Dispose();
+            await _appDbContext.SaveChangesAsync();
+            await _appDbContext.DisposeAsync();
         }
     }
 }

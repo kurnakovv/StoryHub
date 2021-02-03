@@ -1,13 +1,14 @@
 ﻿using StoryHub.BL.Models;
 using System;
+using System.Threading.Tasks;
 
 namespace StoryHub.BL.Services.Abstract
 {
     public interface IStorytellerCRUD
     {
-        string CreateStoryteller(Storyteller storyteller);
+        Task<string> CreateStoryteller(Storyteller storyteller);
         Storyteller GetStorytellerById(string id);
-        Storyteller UpdateStoryteller(Storyteller storyteller);
-        void DeleteStorytellerById(string id);
+        Task<Storyteller> UpdateStoryteller(Storyteller storyteller);
+        Task DeleteStorytellerById(string id);
     }
 }

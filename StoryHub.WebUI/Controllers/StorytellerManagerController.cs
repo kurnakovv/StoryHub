@@ -5,6 +5,7 @@ using StoryHub.WebUI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace StoryHub.WebUI.Controllers
 {
@@ -20,12 +21,12 @@ namespace StoryHub.WebUI.Controllers
             _storytellerCRUD = storytellerCRUD;
         }
 
-        public IActionResult Index(string search)
+        public async Task<IActionResult> Index(string search)
         {
             IEnumerable<Storyteller> storytellers;
             if(string.IsNullOrWhiteSpace(search))
             {
-                storytellers = _storytellerService.GetAllStorytellers();
+                storytellers = await _storytellerService.GetAllStorytellers();
             }
             else
             {
@@ -62,7 +63,7 @@ namespace StoryHub.WebUI.Controllers
 
         [HttpPost, ActionName("UpdateStoryteller")]
         [ValidateAntiForgeryToken]
-        public IActionResult UpdateStorytellerPost(UpdateStorytellerViewModel updateStoryteller)
+        public async Task<IActionResult> UpdateStorytellerPost(UpdateStorytellerViewModel updateStoryteller)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +88,7 @@ namespace StoryHub.WebUI.Controllers
                 };
                 #endregion
 
-                _storytellerCRUD.UpdateStoryteller(newStoryteller);
+                await _storytellerCRUD.UpdateStoryteller(newStoryteller);
                 return RedirectToAction("Index");
             }
             return View(updateStoryteller);
@@ -104,9 +105,9 @@ namespace StoryHub.WebUI.Controllers
 
         [HttpPost, ActionName("DeleteStoryteller")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteStorytellerPost(string id)
+        public async Task<IActionResult> DeleteStorytellerPost(string id)
         {
-            _storytellerCRUD.DeleteStorytellerById(id);
+            await _storytellerCRUD.DeleteStorytellerById(id);
             return RedirectToAction("Index");
         }
 

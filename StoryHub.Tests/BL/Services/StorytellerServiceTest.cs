@@ -5,6 +5,7 @@ using StoryHub.BL.Services;
 using StoryHub.BL.Services.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace StoryHub.Tests.BL.Services
 {
@@ -87,17 +88,16 @@ namespace StoryHub.Tests.BL.Services
             IStorytellerCRUD storytellerService1 = new StorytellerService();
             IStorytellerCRUD storytellerService2 = new StorytellerService();
 
-            var result = storytellerService1.CreateStoryteller(storyteller);
+            Task<string> result = storytellerService1.CreateStoryteller(storyteller);
             storytellerService2.DeleteStorytellerById(storyteller.Id);
-
             Assert.IsNotNull(result);
             Assert.IsNotNull(storyteller);
-            Assert.AreEqual(storyteller.Id, result);
+            Assert.AreEqual(storyteller.Id, result.Result);
         }
 
         [TestMethod]
         [ExpectedException(typeof(Exception))]
-        public void CannotCreateStorytellerIfAlreadyExists_ReturnException()
+        public async Task CannotCreateStorytellerIfAlreadyExists_ReturnException()
         {
             Storyteller storyteller = new Storyteller("Name", 1, true, "img.png", "About", 18)
             {
@@ -122,9 +122,9 @@ namespace StoryHub.Tests.BL.Services
             IStorytellerCRUD storytellerService2 = new StorytellerService();
             IStorytellerCRUD storytellerService3 = new StorytellerService();
 
-            storytellerService1.CreateStoryteller(storyteller);
-            storytellerService2.CreateStoryteller(storyteller);
-            storytellerService3.DeleteStorytellerById(storyteller.Id);
+            await storytellerService1.CreateStoryteller(storyteller);
+            await storytellerService2.CreateStoryteller(storyteller);
+            await storytellerService3.DeleteStorytellerById(storyteller.Id);
         }
 
         [TestMethod]
@@ -247,18 +247,18 @@ namespace StoryHub.Tests.BL.Services
             var result = storytellerService2.UpdateStoryteller(storyteller);
             storytellerService3.DeleteStorytellerById(storyteller.Id);
 
-            Assert.AreEqual(storyteller, result);
+            Assert.AreEqual(storyteller, result.Result);
         }
 
         [TestMethod]
         [ExpectedException(typeof(Exception))]
-        public void CannotUpdateInvalidStoryteller_ReturnException()
+        public async Task CannotUpdateInvalidStoryteller_ReturnException()
         {
             Storyteller storyteller = null;
 
             IStorytellerCRUD storytellerService = new StorytellerService();
 
-            storytellerService.UpdateStoryteller(storyteller);
+            await storytellerService.UpdateStoryteller(storyteller);
         }
 
         [TestMethod]
@@ -290,6 +290,8 @@ namespace StoryHub.Tests.BL.Services
             storytellerService1.CreateStoryteller(storyteller);
             var result = storytellerService2.FindStorytellerById(storyteller.Id);
             storytellerService3.DeleteStorytellerById(storyteller.Id);
+
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
@@ -321,6 +323,8 @@ namespace StoryHub.Tests.BL.Services
             storytellerService1.CreateStoryteller(storyteller);
             var result = storytellerService2.FindStorytellersByUserName(storyteller.UserName);
             storytellerService3.DeleteStorytellerById(storyteller.Id);
+
+            Assert.IsNotNull(result);
         }
     }
 }
