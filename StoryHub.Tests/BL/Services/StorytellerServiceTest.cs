@@ -291,5 +291,36 @@ namespace StoryHub.Tests.BL.Services
             var result = storytellerService2.FindStorytellerById(storyteller.Id);
             storytellerService3.DeleteStorytellerById(storyteller.Id);
         }
+
+        [TestMethod]
+        public void CanFindStorytellerByValidUserName_ReturnStoryteller()
+        {
+            Storyteller storyteller = new Storyteller("Name", 0, true, "img.png", "About", 18)
+            {
+                Id = "5050241f-a600-4d64-8634-0de904c043c1",
+                AccessFailedCount = 0,
+                EmailConfirmed = false,
+                PhoneNumberConfirmed = false,
+                TwoFactorEnabled = false,
+                LockoutEnabled = false,
+                UserName = "UserName",
+                NormalizedUserName = "USERNAME",
+                Email = "simple@gmail.com",
+                NormalizedEmail = "SIMPLE@gmail.com",
+                PasswordHash = "Pasfjdsasd",
+                ConcurrencyStamp = "fjjffjfjf",
+                LockoutEnd = DateTime.Now,
+                PhoneNumber = "885553531",
+                SecurityStamp = "Securitystamp",
+            };
+
+            IStorytellerCRUD storytellerService1 = new StorytellerService();
+            IStorytellerService storytellerService2 = new StorytellerService();
+            IStorytellerCRUD storytellerService3 = new StorytellerService();
+
+            storytellerService1.CreateStoryteller(storyteller);
+            var result = storytellerService2.FindStorytellersByUserName(storyteller.UserName);
+            storytellerService3.DeleteStorytellerById(storyteller.Id);
+        }
     }
 }

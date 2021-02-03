@@ -66,6 +66,16 @@ namespace StoryHub.BL.Services
         }
 
         public Storyteller FindStorytellerById(string id) => _appDbContext.Storytellers.Find(id);
+        public IEnumerable<Storyteller> FindStorytellersByUserName(string userName)
+        {
+            IEnumerable<Storyteller> storytellers = 
+                _appDbContext.Storytellers.Where(s => s.UserName.Contains(userName));
+
+            if (storytellers.Count() == 0)
+                throw new Exception("Storyteller not found.");
+
+            return storytellers;
+        }
 
         public void AddSubscriber() { }
 

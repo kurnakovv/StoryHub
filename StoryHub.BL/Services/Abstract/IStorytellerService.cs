@@ -1,5 +1,4 @@
 ﻿using StoryHub.BL.Models;
-using System;
 using System.Collections.Generic;
 
 namespace StoryHub.BL.Services.Abstract
@@ -8,6 +7,7 @@ namespace StoryHub.BL.Services.Abstract
     {
         IEnumerable<Storyteller> GetAllStorytellers();
         Storyteller FindStorytellerById(string id);
+        IEnumerable<Storyteller> FindStorytellersByUserName(string userName);
         void AddSubscriber();
     }
 }
