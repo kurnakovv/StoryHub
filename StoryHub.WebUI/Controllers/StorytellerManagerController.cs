@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using StoryHub.BL.Models;
 using StoryHub.BL.Services.Abstract;
 using StoryHub.WebUI.ViewModels;
@@ -11,12 +12,15 @@ namespace StoryHub.WebUI.Controllers
 {
     public class StorytellerManagerController : Controller
     {
+        private readonly ILogger<StorytellerManagerController> _logger;
         private readonly IStorytellerService _storytellerService;
         private readonly IStorytellerCRUD _storytellerCRUD;
 
-        public StorytellerManagerController(IStorytellerService storytellerService,
+        public StorytellerManagerController(ILogger<StorytellerManagerController> logger,
+                                            IStorytellerService storytellerService,
                                             IStorytellerCRUD storytellerCRUD)
         {
+            _logger = logger;
             _storytellerService = storytellerService;
             _storytellerCRUD = storytellerCRUD;
         }
@@ -36,6 +40,7 @@ namespace StoryHub.WebUI.Controllers
                 } 
                 catch (Exception ex)
                 {
+                    _logger.LogInformation(ex.Message);
                     return NotFound(ex.Message);
                 }
             }
@@ -48,7 +53,10 @@ namespace StoryHub.WebUI.Controllers
             Storyteller storyteller = _storytellerCRUD.GetStorytellerById(id);
 
             if (storyteller is null)
+            {
+                _logger.LogInformation("Storyteller not found.");
                 return NotFound();
+            }
 
             var updateStoryteller = new UpdateStorytellerViewModel
             {
@@ -89,6 +97,7 @@ namespace StoryHub.WebUI.Controllers
                 #endregion
 
                 await _storytellerCRUD.UpdateStoryteller(newStoryteller);
+                _logger.LogInformation($"Updated storyteller: {newStoryteller.Name}");
                 return RedirectToAction("Index");
             }
             return View(updateStoryteller);
@@ -98,7 +107,10 @@ namespace StoryHub.WebUI.Controllers
         {
             Storyteller storyteller = _storytellerService.FindStorytellerById(id);
             if (storyteller is null)
+            {
+                _logger.LogInformation("Storyteller not found.");
                 return NotFound();
+            }
 
             return PartialView(storyteller);
         }
@@ -108,6 +120,7 @@ namespace StoryHub.WebUI.Controllers
         public async Task<IActionResult> DeleteStorytellerPost(string id)
         {
             await _storytellerCRUD.DeleteStorytellerById(id);
+            _logger.LogInformation($"Deleted storyteller: {id}");
             return RedirectToAction("Index");
         }
 
