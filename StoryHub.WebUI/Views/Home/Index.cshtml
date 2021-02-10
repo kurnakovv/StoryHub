@@ -16,11 +16,10 @@
         @foreach (Storyteller item in Model)
         {
             <div class="col-md-4">
-                <a2>
+                <a asp-controller="StorytellerProfile" asp-route-id="@item.Id">
                     @item.Name
                     <img src="~/imagesStorytellers/@Url.Content(item.Image)" style="width:150px; height:150px;" />
-
-                </a2><br />
+                </a>
             </div>
         }
 
