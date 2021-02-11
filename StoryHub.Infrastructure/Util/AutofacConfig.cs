@@ -13,6 +13,8 @@ namespace StoryHub.Infrastructure.Util
         {
             services.AddTransient<IStorytellerService, StorytellerService>();
             services.AddTransient<IStorytellerCRUD, StorytellerService>();
+            services.AddTransient<IStoryCRUD, StoryService>();
+            services.AddTransient<IStoryService, StoryService>();
         }
     }
 }
