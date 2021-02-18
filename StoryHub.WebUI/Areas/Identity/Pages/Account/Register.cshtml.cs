@@ -102,7 +102,7 @@ namespace StoryHub.WebUI.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 string imageName = AddImage();
-                var user = new Storyteller(Input.Name, 0, Input.Gender, imageName, Input.About, Input.Age)
+                var user = new Storyteller(Input.Name, Input.Gender, imageName, Input.About, Input.Age)
                 {
                     UserName = Input.Name,
                     Email = Input.Email

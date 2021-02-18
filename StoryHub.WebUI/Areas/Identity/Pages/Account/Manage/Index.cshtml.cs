@@ -112,7 +112,6 @@ namespace StoryHub.WebUI.Areas.Identity.Pages.Account.Manager
                 Input.Age = user.Age;
 
             var storyteller = new Storyteller(user.Name,
-                                              user.QuantityStories,
                                               Input.Gender,
                                               image,
                                               Input.About,

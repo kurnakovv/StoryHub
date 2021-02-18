@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Story>
+
+@{
+    ViewData["Title"] = "Stories";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>You have @Model.Count() stories</h3>
+
+@foreach (Story story in Model)
+{
+    <div>@story.Name</div>
+}
