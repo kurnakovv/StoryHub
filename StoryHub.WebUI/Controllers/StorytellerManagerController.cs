@@ -5,7 +5,6 @@ using StoryHub.BL.Services.Abstract;
 using StoryHub.WebUI.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace StoryHub.WebUI.Controllers
@@ -79,7 +78,6 @@ namespace StoryHub.WebUI.Controllers
                 Storyteller oldStoryteller = _storytellerCRUD.GetStorytellerById(updateStoryteller.Id);
 
                 Storyteller newStoryteller = new Storyteller(oldStoryteller.Name,
-                                                             oldStoryteller.QuantityStories,
                                                              oldStoryteller.Gender,
                                                              SetImage(oldStoryteller, updateStoryteller),
                                                              updateStoryteller.About,
