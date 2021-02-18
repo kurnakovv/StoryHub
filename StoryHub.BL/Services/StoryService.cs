@@ -37,6 +37,21 @@ namespace StoryHub.BL.Services
             return await _appDbContext.Stories.ToListAsync();
         }
 
+        public async Task<IEnumerable<Story>> GetStorytellerStories(Storyteller storyteller)
+        {
+            IEnumerable<Story> stories = await _appDbContext.Stories
+                            .Include(story => story.Storyteller)
+                            .Where(story => story.StorytellerId == storyteller.Id)
+                            .ToListAsync();
+
+            if(stories.Count() == 0)
+            {
+                throw new InvalidOperationException("You have not stories.");
+            }
+
+            return stories;
+        }
+
         public Story GetStoryById(string id)
         {
             if (id == null)
