@@ -15,12 +15,10 @@ namespace StoryHub.Tests.BL.Services
         // For cleanup.
         private readonly AppDbContext _appDbContext = new AppDbContext();
 
-        private Story _story = new Story("Name",
+        private Story _story = new Story(null,
+                                         "Name",
                                          "Image.jpg",
                                          "Text.",
-                                         0,
-                                         0,
-                                         null,
                                          null);
         [TestCleanup]
         public async Task TestCleanup()
