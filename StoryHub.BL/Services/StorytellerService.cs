@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using StoryHub.BL.Db_Context;
 using StoryHub.BL.Models;
 using StoryHub.BL.Services.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace StoryHub.BL.Services
@@ -12,6 +14,13 @@ namespace StoryHub.BL.Services
     public class StorytellerService : IStorytellerService, IStorytellerCRUD
     {
         private readonly AppDbContext _appDbContext = new AppDbContext();
+        private readonly UserManager<Storyteller> _userManager;
+
+        public StorytellerService() { }
+        public StorytellerService(UserManager<Storyteller> userManager)
+        {
+            _userManager = userManager;
+        }
 
         public async Task<IEnumerable<Storyteller>> GetAllStorytellers() 
             => await _appDbContext.Storytellers.ToListAsync();
@@ -51,6 +60,16 @@ namespace StoryHub.BL.Services
             throw new KeyNotFoundException("Storyteller not found by id");
         }
 
+        public async Task<Storyteller> GetCurrentStoryteller(ClaimsPrincipal currentStoryteller)
+        {
+            if(currentStoryteller == null)
+            {
+                throw new InvalidOperationException("Storyteller cannot be empty.");
+            }
+
+            return await _userManager.GetUserAsync(currentStoryteller);
+        }
+
         public async Task<Storyteller> UpdateStoryteller(Storyteller storyteller)
         {
             if (storyteller != null)
@@ -66,6 +85,8 @@ namespace StoryHub.BL.Services
 
             throw new Exception("Storyteller cannot be empty");
         }
+
+        
 
         public Storyteller FindStorytellerById(string id) => _appDbContext.Storytellers.Find(id);
         public IEnumerable<Storyteller> FindStorytellersByUserName(string userName)
