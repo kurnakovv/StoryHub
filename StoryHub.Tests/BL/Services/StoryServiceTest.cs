@@ -39,11 +39,14 @@ namespace StoryHub.Tests.BL.Services
             IStoryCRUD storyService1 = new StoryService();
 
             // Act.
-            var result = storyService1.CreateStory(_story);
+            var result = storyService1.CreateStory(_story).Result;
 
             // Assert.
-            Assert.IsNotNull(result);
-            Assert.AreEqual(_story.Id, result.Result);
+            Assert.IsNotNull(result, "CreateStory method returned null!");
+
+            Assert.IsFalse(string.IsNullOrWhiteSpace(result), "Returned Story ID is Null Or White Space!");
+
+            Assert.AreEqual(_story.Id, result, "Private Story object id and Story result id are not equal!");
         }
 
         [TestMethod]
@@ -71,7 +74,10 @@ namespace StoryHub.Tests.BL.Services
             var result = storyService2.GetStoryById(_story.Id);
 
             // Assert.
-            Assert.AreEqual(_story.Id, result.Id);
+            Assert.IsFalse(string.IsNullOrWhiteSpace(_story.Id), "Private Story ID is Null Or White Space!");
+            Assert.IsFalse(string.IsNullOrWhiteSpace(result.Id), "Returned Story ID is Null Or White Space!");
+
+            Assert.AreEqual(_story.Id, result.Id, "Private Story object id and Story result id are not equal!");
         }
 
         [TestMethod]
@@ -93,10 +99,13 @@ namespace StoryHub.Tests.BL.Services
 
             // Act.
             await storyService1.CreateStory(_story);
-            var result = storyService2.UpdateStory(_story);
+            var result = storyService2.UpdateStory(_story).Result;
 
             // Assert.
-            Assert.AreEqual(_story.Id, result.Result.Id);
+            Assert.IsFalse(string.IsNullOrWhiteSpace(_story.Id), "Private Story ID is Null Or White Space!");
+            Assert.IsFalse(string.IsNullOrWhiteSpace(result.Id), "Returned Story ID is Null Or White Space!");
+
+            Assert.AreEqual(_story.Id, result.Id, "Private Story object id and Story result id are not equal!");
         }
     }
 }

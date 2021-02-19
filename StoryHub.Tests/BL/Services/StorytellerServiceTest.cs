@@ -59,13 +59,15 @@ namespace StoryHub.Tests.BL.Services
 
             var result = storytellerService.GetAllStorytellers();
 
-            Assert.AreEqual(storytellers, result);
+            // Seriously? Compare collections of objects?
+            // For this it is worth using lambda expressions over each object.
+            Assert.AreEqual(storytellers, result, "Created storytellers object and returned storytellers are not equal!");
         }
 
         [TestMethod]
         public void CanCreateValidStoryteller_ReturnId()
         {
-
+            //Arrange
             Storyteller storyteller = new Storyteller("Name", 1, true, "img.png", "About", 18)
             {
                 Id = "5050241f-a600-4d64-8634-0de904c043c1",
@@ -85,20 +87,28 @@ namespace StoryHub.Tests.BL.Services
                 SecurityStamp = "Securitystamp",
             };
 
+            //Act
             IStorytellerCRUD storytellerService1 = new StorytellerService();
             IStorytellerCRUD storytellerService2 = new StorytellerService();
 
-            Task<string> result = storytellerService1.CreateStoryteller(storyteller);
+            string result = storytellerService1.CreateStoryteller(storyteller).Result;
             storytellerService2.DeleteStorytellerById(storyteller.Id);
-            Assert.IsNotNull(result);
-            Assert.IsNotNull(storyteller);
-            Assert.AreEqual(storyteller.Id, result.Result);
+
+            //Assert
+            Assert.IsFalse(string.IsNullOrWhiteSpace(storyteller.Id), "Created Storyteller ID is Null Or White Space!");
+            Assert.IsFalse(string.IsNullOrWhiteSpace(result), "Returned Storyteller ID is Null Or White Space!");
+
+            Assert.IsNotNull(result, "Storyteller method returned null!");
+            Assert.IsNotNull(storyteller, "Created storyteller is null!");
+
+            Assert.AreEqual(storyteller.Id, result, "Created storytellers id and returned storytellers id are not equal!");
         }
 
         [TestMethod]
         [ExpectedException(typeof(Exception))]
         public async Task CannotCreateStorytellerIfAlreadyExists_ReturnException()
         {
+            //Arrange
             Storyteller storyteller = new Storyteller("Name", 1, true, "img.png", "About", 18)
             {
                 Id = "5050241f-a600-4d64-8634-0de904c043c1",
@@ -118,6 +128,7 @@ namespace StoryHub.Tests.BL.Services
                 SecurityStamp = "Securitystamp",
             };
 
+            //Act
             IStorytellerCRUD storytellerService1 = new StorytellerService();
             IStorytellerCRUD storytellerService2 = new StorytellerService();
             IStorytellerCRUD storytellerService3 = new StorytellerService();
@@ -125,11 +136,14 @@ namespace StoryHub.Tests.BL.Services
             await storytellerService1.CreateStoryteller(storyteller);
             await storytellerService2.CreateStoryteller(storyteller);
             await storytellerService3.DeleteStorytellerById(storyteller.Id);
+
+            //Assert
         }
 
         [TestMethod]
         public void CanDeleteStorytellerByValidId()
         {
+            //Arrange
             Storyteller storyteller = new Storyteller("Name", 0, true, "img.png", "About", 18)
             {
                 Id = "5050241f-a600-4d64-8634-0de904c043c1",
@@ -149,16 +163,19 @@ namespace StoryHub.Tests.BL.Services
                 SecurityStamp = "Securitystamp",
             };
 
+            //Act
             IStorytellerCRUD storytellerService = new StorytellerService();
 
             storytellerService.DeleteStorytellerById(storyteller.Id);
 
-            Assert.IsNotNull(storyteller);
+            //Assert
+            Assert.IsNotNull(storyteller, "Created Storyteller is null!");
         }
 
         [TestMethod]
         public void CanGetStorytellerByValidId()
         {
+            //Arrange
             Storyteller storyteller = new Storyteller("Name", 0, true, "img.png", "About", 18)
             {
                 Id = "5050241f-a600-4d64-8634-0de904c043c1",
@@ -178,6 +195,7 @@ namespace StoryHub.Tests.BL.Services
                 SecurityStamp = "Securitystamp",
             };
 
+            //Act
             IStorytellerCRUD storytellerService1 = new StorytellerService();
             IStorytellerCRUD storytellerService2 = new StorytellerService();
             IStorytellerCRUD storytellerService3 = new StorytellerService();
@@ -186,13 +204,19 @@ namespace StoryHub.Tests.BL.Services
             var result = storytellerService2.GetStorytellerById(storyteller.Id);
             storytellerService3.DeleteStorytellerById(storyteller.Id);
 
-            Assert.AreEqual(storyteller.Id, result.Id);
+            //Assert
+            Assert.IsFalse(string.IsNullOrWhiteSpace(storyteller.Id), "Created Storyteller ID is Null Or White Space!");
+            Assert.IsFalse(string.IsNullOrWhiteSpace(result.Id), "Returned Storyteller ID is Null Or White Space!");
+
+            Assert.AreEqual(storyteller.Id, result.Id, "Created Storyteller ID and " +
+                                                       "returned by GetStorytellerById method ID are not equal!");
         }
 
         [TestMethod]
         [ExpectedException(typeof(KeyNotFoundException))]
         public void CannotGetStorytellerByInvalidId_ReturnException()
         {
+            //Arrange
             Storyteller storyteller = new Storyteller("Name", 0, true, "img.png", "About", 18)
             {
                 Id = null,
@@ -212,14 +236,18 @@ namespace StoryHub.Tests.BL.Services
                 SecurityStamp = "Securitystamp",
             };
 
+            //Act
             IStorytellerCRUD storytellerService = new StorytellerService();
 
             storytellerService.GetStorytellerById(storyteller.Id);
+
+            //Assert
         }
 
         [TestMethod]
         public void CanUpdateValidStoryteller_ReturnStoryteller()
         {
+            //Arrange
             Storyteller storyteller = new Storyteller("Name", 0, true, "img.png", "About", 18)
             {
                 Id = "5050241f-a600-4d64-8634-0de904c043c1",
@@ -239,15 +267,23 @@ namespace StoryHub.Tests.BL.Services
                 SecurityStamp = "Securitystamp",
             };
 
+            //Act
             IStorytellerCRUD storytellerService1 = new StorytellerService();
             IStorytellerCRUD storytellerService2 = new StorytellerService();
             IStorytellerCRUD storytellerService3 = new StorytellerService();
 
             storytellerService1.CreateStoryteller(storyteller);
-            var result = storytellerService2.UpdateStoryteller(storyteller);
+            var result = storytellerService2.UpdateStoryteller(storyteller).Result;
             storytellerService3.DeleteStorytellerById(storyteller.Id);
 
-            Assert.AreEqual(storyteller, result.Result);
+            //Assert
+
+            // Seriously? Compare classes by reference?
+            /* I recommend adding an Equal method to the storyteller class and comparing its result.
+
+                Assert.IsTrue(storyteller.Equal(result));
+            */
+            Assert.AreEqual(storyteller, result);
         }
 
         [TestMethod]
@@ -264,6 +300,7 @@ namespace StoryHub.Tests.BL.Services
         [TestMethod]
         public void CanFindStorytellerByValidId_ReturnStoryteller()
         {
+            //Arrange
             Storyteller storyteller = new Storyteller("Name", 0, true, "img.png", "About", 18)
             {
                 Id = "5050241f-a600-4d64-8634-0de904c043c1",
@@ -283,6 +320,7 @@ namespace StoryHub.Tests.BL.Services
                 SecurityStamp = "Securitystamp",
             };
 
+            //Act
             IStorytellerCRUD storytellerService1 = new StorytellerService();
             IStorytellerService storytellerService2 = new StorytellerService();
             IStorytellerCRUD storytellerService3 = new StorytellerService();
@@ -291,12 +329,15 @@ namespace StoryHub.Tests.BL.Services
             var result = storytellerService2.FindStorytellerById(storyteller.Id);
             storytellerService3.DeleteStorytellerById(storyteller.Id);
 
-            Assert.IsNotNull(result);
+
+            //Assert
+            Assert.IsNotNull(result, "FindStorytellerById method returned null!");
         }
 
         [TestMethod]
         public void CanFindStorytellerByValidUserName_ReturnStoryteller()
         {
+            //Arrange
             Storyteller storyteller = new Storyteller("Name", 0, true, "img.png", "About", 18)
             {
                 Id = "5050241f-a600-4d64-8634-0de904c043c1",
@@ -316,6 +357,7 @@ namespace StoryHub.Tests.BL.Services
                 SecurityStamp = "Securitystamp",
             };
 
+            //Act
             IStorytellerCRUD storytellerService1 = new StorytellerService();
             IStorytellerService storytellerService2 = new StorytellerService();
             IStorytellerCRUD storytellerService3 = new StorytellerService();
@@ -324,7 +366,8 @@ namespace StoryHub.Tests.BL.Services
             var result = storytellerService2.FindStorytellersByUserName(storyteller.UserName);
             storytellerService3.DeleteStorytellerById(storyteller.Id);
 
-            Assert.IsNotNull(result);
+            //Assert
+            Assert.IsNotNull(result, "FindStorytellersByUserName method returned null!");
         }
     }
 }
