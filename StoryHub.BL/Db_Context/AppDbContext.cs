@@ -9,12 +9,13 @@ namespace StoryHub.BL.Db_Context
         public AppDbContext() { }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-            Database.EnsureCreated();
         }
 
+        // You can remove this method and use connection 
+        // strings from appsettings.json by removing the empty constructor.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=StoryHub;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-N9EORNQ;Database=StoryHub;Trusted_Connection=True;");
         }
 
         public DbSet<Storyteller> Storytellers { get; set; }
