@@ -7,6 +7,7 @@
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
+* [How to start](#how-to-start)
 * [Features](#features)
 * [Status](#status)
 * [Special thanks](#special-thanks)
@@ -21,6 +22,10 @@ I decided to switch from asp net to asp net core. To make the transition not so 
 * EntityFrameworkCore - version 3.1.10
 * Autofac - version 6.1.0
 * Bootstrap - version 4
+
+## How to start
+* enter in package manager console: ```update-database -Context AppDbContext```
+* start project
 
 ## Versions
 * v1.0.0 - Simple registration of storytellers, with a control panel without a pretty interface.
