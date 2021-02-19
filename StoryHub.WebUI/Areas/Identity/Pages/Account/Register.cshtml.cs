@@ -105,7 +105,7 @@ namespace StoryHub.WebUI.Areas.Identity.Pages.Account
                 var user = new Storyteller(Input.Name, Input.Gender, imageName, Input.About, Input.Age)
                 {
                     UserName = Input.Name,
-                    Email = Input.Email
+                    Email = Input.Email.ToLower(),
                 };
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
