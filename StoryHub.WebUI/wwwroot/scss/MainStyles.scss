@@ -1,0 +1,127 @@
+﻿@import "../css/NullStyle.css";
+
+$WindowHoverColor: #96dcdc;
+$BackColor: #dbdbdb;
+
+$PostFontFamily: "Georgia";
+
+body {
+	font-family: arial;
+    display: flex;
+    flex-direction: column;
+    background-color: $BackColor;
+    font-size: 20px;
+    min-height: 100vh;
+
+    header{
+    	margin-bottom: 10px;
+
+    	box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    	position: sticky;
+    	top: 0;
+    	background-color: #dbdbdb;
+    	
+    	nav{
+    		display: flex;
+    		justify-content: space-between;
+
+    		.nav-container{
+    			display: flex;
+    			flex-grow: 1;
+    			:hover{
+	    			background-color: $WindowHoverColor;
+	    		}
+
+    			.titleReference{
+    				padding: 13px 15px;
+    				font-size: 25px;
+    				font-weight: 600;
+    				text-decoration: none;
+    				color: black;
+    			}
+    			.nav-container--ref{
+    				display: flex;
+    				text-decoration: none;
+    				color: black;
+    				padding: 15px 15px;
+    			}
+    		}
+			.delimiter{
+				display: flex;
+				min-width: 60%;
+			}
+    	}
+    }
+    main{
+    	min-height: 100vh;
+	    display: flex;
+	    justify-content: center;
+	    flex-grow: 1;
+
+	    .main-contentForm{
+	    	display: flex;
+	    	flex-direction: column;
+	    	flex-wrap: wrap;
+	    	flex-grow: 1;
+
+	    	.main-contentForm-searchButtons{
+	    		display: flex;
+	    		align-self: center;
+
+	    		margin-bottom: 2%;
+	    		margin-left: 5%;
+	    		:hover{
+	    				background-color: $WindowHoverColor;
+	    			}
+
+	    		.inputText{
+	    			font-size: 15px;
+	    			padding: 5px 15px;
+	    		}
+	    		.inputSubmit{
+	    			padding: 0px 8px;
+	    			font-size: 15px;
+
+	    		}
+	    	}
+	    	.errorMessage{
+	    		align-self: center;
+	    	}
+	    	.main-contentForm-content{
+	    		display: flex;
+	    		flex-wrap: wrap;
+	    		justify-content: space-around;
+
+	    		.contentForm-user{
+			    	a{
+			    		display: flex;
+			    		padding: 15px;
+
+			    		.contentForm-user-header{
+
+				    	}
+			    		.contentForm-user-main{
+			    			font-family: $PostFontFamily;
+
+			    			padding-left: 10px;
+
+			    			display: flex;
+			    			flex-direction: column;
+
+			    			color: black;
+			    		}
+			    	}
+			    }
+			}
+	    }
+    }
+    footer{
+    	box-shadow: 0 0 15px rgba(0,0,0,0.3);
+
+    	min-height: 7%;
+
+    	padding-top: 10px;
+
+    	font-size: 15px;
+    }
+}

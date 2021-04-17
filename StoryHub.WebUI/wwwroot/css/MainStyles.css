@@ -1,0 +1,98 @@
+@import "../css/NullStyle.css";
+body {
+  font-family: arial;
+  display: flex;
+  flex-direction: column;
+  background-color: #dbdbdb;
+  font-size: 20px;
+  min-height: 100vh;
+}
+body header {
+  margin-bottom: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  background-color: #dbdbdb;
+}
+body header nav {
+  display: flex;
+  justify-content: space-between;
+}
+body header nav .nav-container {
+  display: flex;
+  flex-grow: 1;
+}
+body header nav .nav-container :hover {
+  background-color: #96dcdc;
+}
+body header nav .nav-container .titleReference {
+  padding: 13px 15px;
+  font-size: 25px;
+  font-weight: 600;
+  text-decoration: none;
+  color: black;
+}
+body header nav .nav-container .nav-container--ref {
+  display: flex;
+  text-decoration: none;
+  color: black;
+  padding: 15px 15px;
+}
+body header nav .delimiter {
+  display: flex;
+  min-width: 60%;
+}
+body main {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+body main .main-contentForm {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+body main .main-contentForm .main-contentForm-searchButtons {
+  display: flex;
+  align-self: center;
+  margin-bottom: 2%;
+  margin-left: 5%;
+}
+body main .main-contentForm .main-contentForm-searchButtons :hover {
+  background-color: #96dcdc;
+}
+body main .main-contentForm .main-contentForm-searchButtons .inputText {
+  font-size: 15px;
+  padding: 5px 15px;
+}
+body main .main-contentForm .main-contentForm-searchButtons .inputSubmit {
+  padding: 0px 8px;
+  font-size: 15px;
+}
+body main .main-contentForm .errorMessage {
+  align-self: center;
+}
+body main .main-contentForm .main-contentForm-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+body main .main-contentForm .main-contentForm-content .contentForm-user a {
+  display: flex;
+  padding: 15px;
+}
+body main .main-contentForm .main-contentForm-content .contentForm-user a .contentForm-user-main {
+  font-family: "Georgia";
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  color: black;
+}
+body footer {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  min-height: 7%;
+  padding-top: 10px;
+  font-size: 15px;
+}

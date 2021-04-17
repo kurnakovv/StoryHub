@@ -3,25 +3,33 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<link rel="stylesheet" href="../css/MainStyles.css">
 
-<form asp-controller="Home" asp-action="Index" method="get">
-    <div id="searchInput">
-        <input type="text" name="search" />
-        <input type="submit" value="Search" />
+<form class="main-contentForm" asp-controller="Home" asp-action="Index" method="get">
+    <div class="main-contentForm-searchButtons" id="searchInput">
+        <input class="inputText" type="text" name="search" />
+        <input class="inputSubmit" type="submit" value="Найти пользователя" />
     </div>
-
-    <h1 class="display-4">Welcome</h1>
-    <div class="row">
-
-        @foreach (Storyteller item in Model)
+    <div class="main-contentForm-content">
+        @if (Model.Any())
         {
-            <div class="col-md-4">
-                <a asp-controller="StorytellerProfile" asp-route-id="@item.Id">
-                    @item.Name
-                    <img src="~/imagesStorytellers/@Url.Content(item.Image)" style="width:150px; height:150px;" />
-                </a>
-            </div>
+            @foreach (Storyteller item in Model)
+            {
+                <div class="contentForm-user">
+                    <a asp-controller="StorytellerProfile" asp-route-id="@item.Id">
+                        <div class="contentForm-user-header">
+                            <img src="~/imagesStorytellers/@Url.Content(item.Image)" style="width:150px; height:200px;" alt="UserIcon" />
+                        </div>
+                        <div class="contentForm-user-main">
+                            <span style="color: black;">@item.Name</span>
+                        </div>
+                    </a>
+                </div>
+            }
         }
-
+        else
+        {
+            <h1 class="errorMessage">Упс, пользователей пока нет.</h1>
+        }
     </div>
 </form>
