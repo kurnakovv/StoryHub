@@ -6,14 +6,15 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-    </li>
-    <li class="nav-item">
+    <div class="nav-container">
+        <a class="nav-container--ref" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+    </div>
+    <div class="nav-container">
+        <!-- TODO: Доработать стили тут. -->
         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            <button type="submit">Logout</button>
         </form>
-    </li>
+    </div>
 }
 else
 {

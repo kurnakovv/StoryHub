@@ -14,16 +14,16 @@
                 <a class="titleReference" href="/">StoryHub</a>
             </div>
             <div class="nav-container">
-                <a class="nav-container--ref" href="/Home/Privacy">Privacy</a>
+                <a class="nav-container--ref" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             </div>
             <div class="delimiter">
-                
+
             </div>
             <div class="nav-container">
-                <a class="nav-container--ref" href="/Identity/Account/Login">Login</a>
+                <a class="nav-container--ref" asp-area="Identity" asp-page="/Account/Login">Login</a>
             </div>
             <div class="nav-container">
-                <a class="nav-container--ref" href="/Identity/Account/Register">Registration</a>
+                <a href="Register.html" class="nav-container--ref" asp-area="Identity" asp-page="/Account/Register">Registration</a>
             </div>
         </nav>
     </header>

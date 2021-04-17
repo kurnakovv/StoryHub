@@ -43,10 +43,12 @@ body header nav .delimiter {
   min-width: 60%;
 }
 body main {
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   flex-grow: 1;
+  margin-bottom: 5%;
+  min-height: -webkit-max-content;
+  min-height: max-content;
 }
 body main .main-contentForm {
   display: flex;

@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="../css/MainStyles.css">
 
 <form class="main-contentForm" asp-controller="Home" asp-action="Index" method="get">
+    <!--TODO: Попробовать переместить в header.-->
     <div class="main-contentForm-searchButtons" id="searchInput">
         <input class="inputText" type="text" name="search" />
         <input class="inputSubmit" type="submit" value="Найти пользователя" />
@@ -22,6 +23,7 @@
                         </div>
                         <div class="contentForm-user-main">
                             <span style="color: black;">@item.Name</span>
+                            <span style="color: black;">@item.About</span>
                         </div>
                     </a>
                 </div>

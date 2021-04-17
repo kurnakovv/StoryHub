@@ -1,0 +1,36 @@
+@import "../css/MainStyles.css";
+.Form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+}
+.Form .greeting {
+  align-self: center;
+  font-size: 30px;
+}
+.Form .Form-inputContainer {
+  width: 120%;
+  margin: 2% 0%;
+  align-self: center;
+}
+.Form .Form-inputContainer input {
+  padding: 5px 10px;
+  font-size: 20px;
+  border: solid black 1.5px;
+  width: 100%;
+}
+.Form .Form-inputContainer .inputFile {
+  display: none;
+}
+.Form .Form-inputContainer .fileLabel {
+  display: block;
+  padding: 20px 80px;
+  background-color: #96dcdc;
+  text-align: center;
+}
+.Form .submitButton {
+  font-size: 30px;
+  padding: 20px 80px;
+  background-color: gray;
+  color: white;
+}
