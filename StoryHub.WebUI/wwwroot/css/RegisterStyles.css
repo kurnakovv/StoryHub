@@ -28,6 +28,9 @@
   background-color: #96dcdc;
   text-align: center;
 }
+.Form .Form-inputContainer .text-danger {
+  display: flex;
+}
 .Form .submitButton {
   font-size: 30px;
   padding: 20px 80px;
