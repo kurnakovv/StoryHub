@@ -29,12 +29,45 @@
     </header>
 
     <main>
-        <form class="Form" asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
-            <h4 class="greeting">Создайте свой аккаунт!</h4>
-            <br>
+        <form class="Form" id="account" method="post">
+            <h4 class="greeting">Войти в под созданным аккаунтом</h4>
+
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="Form-inputContainer">
+                <label asp-for="Input.UserName"></label>
+                <input asp-for="Input.UserName" />
+                <span asp-validation-for="Input.UserName" class="text-danger"></span>
+            </div>
+            <div class="Form-inputContainer">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="Form-inputContainer">
+                <div class="checkbox">
+                    <label asp-for="Input.RememberMe">
+                        <input asp-for="Input.RememberMe" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+            </div>
+            <div class="Form-inputContainer">
+                <button type="submit" class="submitButton">Войти</button>
+            </div>
+            <div class="Form-inputContainer">
+                <p>
+                    <a id="forgot-password" asp-page="./ForgotPassword">Забыли пароль?</a>
+                </p>
+                <p>
+                    <a href="Register.html" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Зарегистрироваться</a>
+                </p>
+            </div>
+        </form>
+        <!--<form class="Form" asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
+            <h4 class="greeting">Создайте свой аккаунт!</h4>
+            <div class="Form-inputContainer">-->
                 <!-- Возможно label, это можно убрать. -->
-                <label asp-for="Input.Name"></label>
+                <!--<label asp-for="Input.Name"></label>
                 <input asp-for="Input.Name" placeholder="Name" />
                 <span asp-validation-for="Input.Name" class="text-danger"></span>
             </div>
@@ -75,7 +108,7 @@
                 <input class="inputFile" id="file" asp-for="Input.Image" type="file" name="files">
             </div>
             <button class="submitButton" type="submit">Зарегистрироваться</button>
-        </form>
+        </form>-->
     </main>
 
     <footer>

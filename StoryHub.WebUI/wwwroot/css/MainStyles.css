@@ -77,9 +77,11 @@ body main .main-contentForm .errorMessage {
   align-self: center;
 }
 body main .main-contentForm .main-contentForm-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  display: inline-flex;
+  flex-direction: column;
+}
+body main .main-contentForm .main-contentForm-content .contentForm-user {
+  border-bottom: 3px inset white;
 }
 body main .main-contentForm .main-contentForm-content .contentForm-user a {
   display: flex;
