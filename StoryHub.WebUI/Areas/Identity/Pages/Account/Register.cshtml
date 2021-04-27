@@ -3,13 +3,13 @@
 @{
     ViewData["Title"] = "Register";
 }
-<link rel="stylesheet" href="~/css/RegisterStyles.css">
+<link rel="stylesheet" href="~/css/PersonalStyles/RegisterStyles.css">
 
 <form class="Form" asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
     <h4 class="greeting">Create your account!</h4>
     <br>
     <div class="Form-inputContainer">
-        <!-- Возможно label, это можно убрать. -->
+        <!-- TODO: Возможно label, это можно убрать. -->
         <label asp-for="Input.Name"></label>
         <input asp-for="Input.Name" />
         <span asp-validation-for="Input.Name" class="text-danger"></span>

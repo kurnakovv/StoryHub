@@ -1,4 +1,4 @@
-@import "../css/MainStyles.css";
+@import "../PersonalStyles/MainStyles.css";
 .Form {
   display: flex;
   flex-direction: column;

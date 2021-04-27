@@ -2,26 +2,29 @@
 @inject SignInManager<Storyteller> SignInManager
 @inject UserManager<Storyteller> UserManager
 
-<link rel="stylesheet" href="../css/MainStyles.css">
+<link rel="stylesheet" href="/css/PersonalStyles/MainStyles.css">
 
 @if (SignInManager.IsSignedIn(User))
 {
     <div class="nav-container">
-        <a class="nav-container--ref" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-    </div>
-    <div class="nav-container">
-        <!-- TODO: Доработать стили тут. -->
-        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button type="submit">Logout</button>
+        <div class="nav-container-element">
+            <a class="nav-container--ref" asp-area="Identity" asp-page="/Account/Manage/Index"
+               title="Manage">Hello @User.Identity.Name!</a>
+        </div>
+        <form style="background-color: #ffc0c0;" class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
+              asp-route-returnUrl="@Url.Action("Index", "Home" , new { area="" })">
+            <button class="navButton" type="submit">Logout</button>
         </form>
     </div>
 }
 else
 {
     <div class="nav-container">
-        <a class="nav-container--ref" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </div>
-    <div class="nav-container">
-        <a class="nav-container--ref" asp-area="Identity" asp-page="/Account/Register">Registration</a>
+        <div class="nav-container-element">
+            <a class="nav-container--ref" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </div>
+        <div class="nav-container-element">
+            <a class="nav-container--ref" asp-area="Identity" asp-page="/Account/Register">Registration</a>
+        </div>
     </div>
 }

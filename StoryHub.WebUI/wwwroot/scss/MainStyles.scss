@@ -1,4 +1,4 @@
-﻿@import "../css/NullStyle.css";
+﻿@import "../NullStyle.css";
 
 $WindowHoverColor: #96dcdc;
 $BackColor: #dbdbdb;
@@ -7,11 +7,12 @@ $PostFontFamily: "Georgia";
 
 body {
 	font-family: arial;
-	display: flex;
+	display: block;
 	flex-direction: column;
 	background-color: $BackColor;
 	font-size: 20px;
 	min-height: 100vh;
+	height: 100%;
 
 	header{
 		margin-bottom: 10px;
@@ -19,36 +20,53 @@ body {
 		box-shadow: 0 0 15px rgba(0,0,0,0.3);
 		position: sticky;
 		top: 0;
-		background-color: #dbdbdb;
+		z-index: 1;
+		
+		background-color: $BackColor;
 		
 		nav{
 			display: flex;
+			flex-grow: 1;
 			justify-content: space-between;
 
 			.nav-container{
 				display: flex;
-				flex-grow: 1;
 				:hover{
 					background-color: $WindowHoverColor;
 				}
-
-				.titleReference{
-					padding: 13px 15px;
-					font-size: 25px;
-					font-weight: 600;
-					text-decoration: none;
-					color: black;
-				}
-				.nav-container--ref{
+				.nav-container-element{
 					display: flex;
-					text-decoration: none;
-					color: black;
-					padding: 15px 15px;
+					align-items: center;
+
+					padding: 11px 11px;
+					
+					:active{
+						background-color: $WindowHoverColor;
+					}
+					
+					.titleReference{
+						font-size: 25px;
+						font-weight: 600;
+						text-decoration: none;
+						color: black;
+					}
+					.nav-container--ref{
+						text-decoration: none;
+						color: black;
+					}
 				}
-			}
-			.delimiter{
-				display: flex;
-				min-width: 60%;
+				form{
+					display: flex;
+					background-color: rgb(255, 192, 192);
+
+					.navButton{
+						padding: 0px 5px;
+						background-color: rgb(255, 192, 192);
+						font-weight: 600;
+						font-size: 17px;
+					}
+				}
+				
 			}
 		}
 	}

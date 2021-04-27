@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Главная страница NotSocialNetwork">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS  -->
+    <link rel="stylesheet" href="../css/PersonalStyles/RegisterStyles.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="nav-container-element">
+                    <a class="titleReference" href="/">StoryHub</a>
+                </div>
+            </div>
+
+            <div class="nav-container">
+                <div class="nav-container-element">
+                    <a class="nav-container--ref" asp-area="Identity" asp-page="/Account/Manage/Index"
+                        title="Manage">Hello @User.Identity.Name!</a>
+                </div>
+                <form style="border-color: #ffc0c0;" class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
+                    asp-route-returnUrl="@Url.Action(" Index", "Home" , new { area="" })">
+                    <button class="navButton" type="submit">Logout</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <partial name="_StatusMessage" model="Model.StatusMessage" />
+        <form class="Form" id="profile-form" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="Form-inputContainer">
+                <label asp-for="Input.Image"></label><br />
+                <!-- src="~/imagesStorytellers/@Model.Input.Image" /> -->
+                <img style="width:200px;" src="../css/images/DefaultImgOfUser.png" />
+                <input asp-for="Input.Image" type="file" name="files">
+                <span asp-validation-for="Input.Image"></span>
+            </div>
+            <div class="Form-inputContainer">
+                <label asp-for="Input.About"></label>
+                <input asp-for="Input.About" class="form-control" placeholder="About..." />
+            </div>
+            <div class="Form-inputContainer">
+                <label asp-for="Input.Gender"></label>
+                <input type="checkbox" asp-for="Input.Gender" class="form-control" />
+            </div>
+            <div class="Form-inputContainer">
+                <label asp-for="Input.Age"></label>
+                <input type="number" asp-for="Input.Age" class="form-control" placeholder="Age" />
+            </div>
+            <div class="Form-inputContainer">
+                <label asp-for="Input.PhoneNumber"></label>
+                <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Phone number" />
+            </div>
+            <button class="submitButton" id="update-profile-button" type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </main>
+
+    <footer>
+        <div class="container">
+            &copy; 2021 - StoryHub - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+</body>
+
+</html>

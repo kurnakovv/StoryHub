@@ -1,30 +1,59 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="description" content="Главная страница NotSocialNetwork">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSS  -->
-    <link rel="stylesheet" href="../css/MainStyles.css">
+    <link rel="stylesheet" href="../css/PersonalStyles/MainStyles.css">
 </head>
+
 <body>
     <header>
         <nav>
             <div class="nav-container">
-                <a class="titleReference" href="/">StoryHub</a>
+                <div class="nav-container-element">
+                    <a class="titleReference" href="/">StoryHub</a>
+                </div>
             </div>
-            <div class="nav-container">
-                <a class="nav-container--ref" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-            <div class="delimiter">
 
-            </div>
             <div class="nav-container">
-                <a href="Login.html" class="nav-container--ref" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                <div class="nav-container-element">
+                    <a class="nav-container--ref" asp-area="Identity" asp-page="/Account/Manage/Index"
+                        title="Manage">Hello @User.Identity.Name!</a>
+                </div>
+                <form style="border-color: #ffc0c0;" class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
+                    asp-route-returnUrl="@Url.Action(" Index", "Home" , new { area="" })">
+                    <button class="navButton" type="submit">Logout</button>
+                </form>
             </div>
-            <div class="nav-container">
-                <a href="Register.html" class="nav-container--ref" asp-area="Identity" asp-page="/Account/Register">Registration</a>
+            <!-- Is SignedIn Elements
+                <div class="nav-container">
+                <div class="nav-container-element">
+                    <a class="nav-container--ref" asp-area="Identity" asp-page="/Account/Manage/Index"
+                        title="Manage">Hello @User.Identity.Name!</a>
+                </div>
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
+                    asp-route-returnUrl="@Url.Action(" Index", "Home" , new { area="" })">
+                    <button class="navButton" type="submit">Logout</button>
+                </form>
             </div>
+            -->
+            <!-- Is not SignedIn Elements 
+                <div class="nav-container">
+                <div class="nav-container-element">
+                    <a class="nav-container--ref" asp-area="Identity" asp-page="/Account/Manage/Index"
+                        title="Manage">Hello @User.Identity.Name!</a>
+                </div>
+                <div class="nav-container-element">
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
+                        asp-route-returnUrl="@Url.Action(" Index", "Home" , new { area="" })">
+                        <button type="submit">Logout</button>
+                    </form>
+                </div>
+            </div>
+            -->
         </nav>
     </header>
 
@@ -39,7 +68,8 @@
                 <div class="contentForm-user">
                     <a>
                         <div class="contentForm-user-header">
-                            <img src="../css/images/DefaultImgOfUser.png" style="width:150px; height:200px;" alt="UserIcon" />
+                            <img src="../css/images/DefaultImgOfUser.png" style="width:150px; height:200px;"
+                                alt="UserIcon" />
                         </div>
                         <div class="contentForm-user-main">
                             <span>Пользователь 1</span>
@@ -51,7 +81,8 @@
                 <div class="contentForm-user">
                     <a>
                         <div class="contentForm-user-header">
-                            <img src="../css/images/DefaultImgOfUser2.png" style="width:150px; height:200px;" alt="UserIcon" />
+                            <img src="../css/images/DefaultImgOfUser2.png" style="width:150px; height:200px;"
+                                alt="UserIcon" />
                         </div>
                         <div class="contentForm-user-main">
                             <span>Пользователь 2</span>
@@ -63,7 +94,8 @@
                 <div class="contentForm-user">
                     <a>
                         <div class="contentForm-user-header">
-                            <img src="../css/images/DefaultImgOfUser3.png" style="width:150px; height:200px;" alt="UserIcon" />
+                            <img src="../css/images/DefaultImgOfUser3.png" style="width:150px; height:200px;"
+                                alt="UserIcon" />
                         </div>
                         <div class="contentForm-user-main">
                             <span>Пользователь 3</span>
@@ -82,4 +114,5 @@
         </div>
     </footer>
 </body>
+
 </html>
