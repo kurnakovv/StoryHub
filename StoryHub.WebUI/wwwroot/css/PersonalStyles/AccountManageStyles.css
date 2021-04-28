@@ -1,0 +1,60 @@
+@import "../PersonalStyles/MainStyles.css";
+main h2 {
+  display: none;
+}
+main div {
+  width: 100%;
+  margin: 0px 5%;
+}
+main div h4 {
+  display: none;
+}
+main div .row {
+  display: flex;
+}
+main div .row .col-md-3 {
+  border: solid 2px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  margin: 0px;
+}
+main div .row .col-md-3 .flex-column {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 0 auto;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
+main div .row .col-md-3 .flex-column .nav-item {
+  display: flex;
+  background-color: #96dcdc;
+}
+main div .row .col-md-3 .flex-column .nav-item :hover {
+  background-color: #e6e6e6;
+}
+main div .row .col-md-3 .flex-column .nav-item .nav-link {
+  font-size: 25px;
+  font-weight: 600;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  width: 100%;
+  text-align: center;
+  color: black;
+}
+main div .row .col-md-9 .Form {
+  flex: 0 1 auto;
+}
+main div .row .col-md-9 .Form .Form-inputContainer {
+  width: 100%;
+}
+main div .row .col-md-9 .Form .Form-inputContainer .imageContainer img {
+  height: 300px;
+  width: 90%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}

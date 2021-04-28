@@ -5,26 +5,47 @@
     <meta name="description" content="Главная страница NotSocialNetwork">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSS  -->
-    <link rel="stylesheet" href="../css/RegisterStyles.css">
+    <link rel="stylesheet" href="../css/PersonalStyles/RegisterStyles.css">
 </head>
 <body>
     <header>
         <nav>
             <div class="nav-container">
-                <a class="titleReference" href="/">StoryHub</a>
+                <div class="nav-container-element">
+                    <a class="titleReference" href="/">StoryHub</a>
+                </div>
             </div>
-            <div class="nav-container">
-                <a class="nav-container--ref" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-            <div class="delimiter">
 
-            </div>
             <div class="nav-container">
-                <a href="Login.html" class="nav-container--ref" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                <div class="nav-container-element">
+                    <a href="Login.html" class="nav-container--ref" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                </div>
+                <div class="nav-container-element">
+                    <a href="Register.html" class="nav-container--ref" asp-area="Identity" asp-page="/Account/Register">Registration</a>
+                </div>
             </div>
-            <div class="nav-container">
-                <a href="Register.html" class="nav-container--ref" asp-area="Identity" asp-page="/Account/Register">Registration</a>
-            </div>
+            <!-- Is SignedIn Elements
+                <div class="nav-container">
+                    <div class="nav-container-element">
+                        <a href="AccountManage.html" class="nav-container--ref" asp-area="Identity" asp-page="/Account/Manage/Index"
+                            title="Manage">Hello @User.Identity.Name!</a>
+                    </div>
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
+                        asp-route-returnUrl="@Url.Action(" Index", "Home" , new { area="" })">
+                        <button class="navButton" type="submit">Logout</button>
+                    </form>
+                </div>
+            -->
+            <!-- Is not SignedIn Elements 
+                <div class="nav-container">
+                    <div class="nav-container-element">
+                        <a href="Login.html" class="nav-container--ref" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    </div>
+                    <div class="nav-container-element">
+                        <a href="Register.html" class="nav-container--ref" asp-area="Identity" asp-page="/Account/Register">Registration</a>
+                    </div>
+                </div>
+            -->
         </nav>
     </header>
 

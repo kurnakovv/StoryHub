@@ -1,0 +1,74 @@
+@import "../PersonalStyles/MainStyles.css";
+
+main {
+    h2 {
+        display: none;
+    }
+
+    div {
+        width: 100%;
+        margin: 0px 5%;
+
+        h4 {
+            display: none;
+        }
+
+        .row {
+            display: flex;
+
+            .col-md-3 {
+                border: solid 2px;
+
+                width: max-content;
+                height: max-content;
+
+                margin: 0px;
+
+                .flex-column {
+                    display: flex;
+                    flex-flow: column nowrap;
+                    flex: 1 0 auto;
+                    height: max-content;
+
+                    .nav-item {
+                        display: flex;
+
+                        background-color: #96dcdc;
+
+                        :hover {
+                            background-color: rgb(230, 230, 230);
+                        }
+
+                        .nav-link {
+                            font-size: 25px;
+                            font-weight: 600;
+                            padding-top: 5%;
+                            padding-bottom: 5%;
+                            width: 100%;
+                            text-align: center;
+                            color: black;
+                        }
+                    }
+                }
+            }
+
+            .col-md-9 {
+                .Form {
+                    flex: 0 1 auto;
+
+                    .Form-inputContainer {
+                        width: 100%;
+
+                        .imageContainer {
+                            img {
+                                height: 300px;
+                                width: 90%;
+                                object-fit: contain;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

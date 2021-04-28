@@ -6,15 +6,13 @@ $WindowHoverColor: #96dcdc;
 	display: flex;
 	flex-direction: column;
 
-	margin-top: 2%;
-
 	.greeting{
 		align-self: center;
 		font-size: 30px;
 	}
 	.Form-inputContainer{
-		width: 80%;
-		margin: 2% 0%;
+		width: 100%;
+		margin: 1% 0%;
 		align-self: center;
 
 		input{
@@ -32,6 +30,7 @@ $WindowHoverColor: #96dcdc;
 			display: block;
 
 			padding: 20px 80px;
+			margin-top: 2%;
 
 			background-color: $WindowHoverColor;
 
@@ -46,6 +45,8 @@ $WindowHoverColor: #96dcdc;
 		font-size: 30px;
 		padding: 20px 80px;
 
+		margin-top: 5%;
+		width: 100%;
 		background-color: gray;
 		color: white;
 	}
