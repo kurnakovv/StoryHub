@@ -6,7 +6,6 @@ main {
     }
 
     div {
-        width: 100%;
         margin: 0px 5%;
 
         h4 {
@@ -42,8 +41,7 @@ main {
                         .nav-link {
                             font-size: 25px;
                             font-weight: 600;
-                            padding-top: 5%;
-                            padding-bottom: 5%;
+                            padding: 5% 5px;
                             width: 100%;
                             text-align: center;
                             color: black;

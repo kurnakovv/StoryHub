@@ -74,7 +74,6 @@ body main .main-contentForm .main-contentForm-searchButtons {
   display: flex;
   align-self: center;
   margin-bottom: 2%;
-  margin-left: 5%;
 }
 body main .main-contentForm .main-contentForm-searchButtons :hover {
   background-color: #96dcdc;
@@ -95,13 +94,24 @@ body main .main-contentForm .main-contentForm-content {
   flex-direction: column;
 }
 body main .main-contentForm .main-contentForm-content .contentForm-user {
-  border-bottom: 3px inset white;
+  border-bottom: 2px inset #9b9b9b;
 }
 body main .main-contentForm .main-contentForm-content .contentForm-user a {
   display: flex;
-  padding: 15px;
+  padding: 4vh 0px;
 }
 body main .main-contentForm .main-contentForm-content .contentForm-user a .contentForm-user-main {
+  font-family: "Georgia";
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  color: black;
+}
+body main .main-contentForm .main-contentForm-content .contentForm-lastUser a {
+  display: flex;
+  padding: 4vh 0px;
+}
+body main .main-contentForm .main-contentForm-content .contentForm-lastUser a .contentForm-user-main {
   font-family: "Georgia";
   padding-left: 10px;
   display: flex;

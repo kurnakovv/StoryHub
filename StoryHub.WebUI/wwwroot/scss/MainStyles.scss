@@ -89,7 +89,6 @@ body {
 				align-self: center;
 
 				margin-bottom: 2%;
-				margin-left: 5%;
 				:hover{
 						background-color: $WindowHoverColor;
 					}
@@ -112,14 +111,28 @@ body {
 				flex-direction: column;
 
 				.contentForm-user{
-					border-bottom: 3px inset white ;
+					border-bottom: 2px inset rgb(155, 155, 155) ;
 					a{
 						display: flex;
-						padding: 15px;
+						padding: 4vh 0px;
 
-						.contentForm-user-header{
+						.contentForm-user-main{
+							font-family: $PostFontFamily;
 
+							padding-left: 10px;
+
+							display: flex;
+							flex-direction: column;
+
+							color: black;
 						}
+					}
+				}
+				.contentForm-lastUser{
+					a{
+						display: flex;
+						padding: 4vh 0px;
+
 						.contentForm-user-main{
 							font-family: $PostFontFamily;
 

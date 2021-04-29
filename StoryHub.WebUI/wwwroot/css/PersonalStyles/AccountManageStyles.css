@@ -3,7 +3,6 @@ main h2 {
   display: none;
 }
 main div {
-  width: 100%;
   margin: 0px 5%;
 }
 main div h4 {
@@ -40,8 +39,7 @@ main div .row .col-md-3 .flex-column .nav-item :hover {
 main div .row .col-md-3 .flex-column .nav-item .nav-link {
   font-size: 25px;
   font-weight: 600;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding: 5% 5px;
   width: 100%;
   text-align: center;
   color: black;

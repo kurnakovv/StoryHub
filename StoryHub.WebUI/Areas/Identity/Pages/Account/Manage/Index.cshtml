@@ -8,41 +8,36 @@
 <link rel="stylesheet" href="~/css/PersonalStyles/AccountManageStyles.css">
 
 <partial name="_StatusMessage" model="Model.StatusMessage" />
-<form class="Form" id="profile-form" method="post" enctype="multipart/form-data" novalidate="novalidate">
+<form class="Form" id="profile-form" method="post" enctype="multipart/form-data">
+    <!-- Стилизовать сообщение об успешном изменении аккаунта. -->
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="Form-inputContainer">
         <div class="imageContainer">
             <img src="~/imagesStorytellers/@Model.Input.Image" alt="UserLogo">
         </div>
-        <label class="fileLabel" for="imageFile">New avatar? (click me)</label>
-        <input class="inputFile" id="imageFile" type="file" name="files">
-        <span class="field-validation-valid" data-valmsg-for="Input.Image" data-valmsg-replace="true"></span>
+        <label asp-for="Input.Image" class="fileLabel" for="imageFile">New avatar? (click me)</label>
+        <input asp-for="Input.Image" class="inputFile" id="imageFile" type="file" name="files">
+        <span asp-validation-for="Input.Image" class="field-validation-valid"></span>
     </div>
     <div class="Form-inputContainer">
-        <label for="Input_About">About</label>
-        <input asp-for="@Model.Input.About" class="form-control" type="text" id="Input_About" name="Input.About">
+        <label asp-for="Input.About" for="Input_About">About</label>
+        <input asp-for="Input.About" class="form-control" id="Input_About">
     </div>
     <div class="Form-inputContainer">
-        <label for="Input_Gender">Gender</label>
-        <input asp-for="@Model.Input.Gender" type="checkbox" class="form-control" checked="checked" data-val="true"
-            data-val-required="The Gender field is required." id="Input_Gender" name="Input.Gender">
+        <label asp-for="Input.Gender" for="Input_Gender">Gender</label>
+        <input asp-for="Input.Gender" class="form-control" id="Input_Gender">
     </div>
     <div class="Form-inputContainer">
-        <label for="Input_Age">Age</label>
-        <input asp-for="@Model.Input.Age" type="number" class="form-control" data-val="true"
-            data-val-required="The Age field is required." id="Input_Age" name="Input.Age">
+        <label asp-for="Input.Age" for="Input_Age">Age</label>
+        <input asp-for="Input.Age" class="form-control" id="Input_Age">
     </div>
     <div class="Form-inputContainer">
-        <label for="Input_PhoneNumber">Phone number</label>
-        <input asp-for="@Model.Input.PhoneNumber" class="form-control" type="tel" data-val="true"
-            data-val-phone="The Phone number field is not a valid phone number." id="Input_PhoneNumber"
-            name="Input.PhoneNumber">
+        <label asp-for="Input.PhoneNumber" for="Input_PhoneNumber">Phone number</label>
+        <input asp-for="Input.PhoneNumber" class="form-control" id="Input_PhoneNumber">
     </div>
     <button class="submitButton" id="update-profile-button" type="submit">
         Update my account
     </button>
-    <input name="__RequestVerificationToken" type="hidden"
-        value="CfDJ8CKgvHKBKbFGkE_8POyfnD5f-ec6zPNwZlSdjyf5ZphQhUAb1zSS_xjRYYtWrKt-8Ff4SABNyMS1jrzrBwaJngGwUVsjI2BKGp7SJBEhR-QZPBTeihUmVw1n36EmUVuGYl0UxEBeR4T8xCNaA1-4eVnkDZg93H4WkkGbOjUbs0zyHX_44l3KnMMIWES85DsPrg"><input
-        name="Input.Gender" type="hidden" value="false">
 </form>
 
 @section Scripts {
