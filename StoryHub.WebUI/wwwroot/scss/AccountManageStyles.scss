@@ -16,7 +16,10 @@ main {
             display: flex;
 
             .col-md-3 {
-                border: solid 2px;
+                position: absolute;
+                top: 10%;
+                left: 2%;
+                border: solid 1.5px;
 
                 width: max-content;
                 height: max-content;
@@ -41,7 +44,7 @@ main {
                         .nav-link {
                             font-size: 25px;
                             font-weight: 600;
-                            padding: 5% 5px;
+                            padding: 5% 1%;
                             width: 100%;
                             text-align: center;
                             color: black;
@@ -64,6 +67,62 @@ main {
                                 object-fit: contain;
                             }
                         }
+                    }
+                }
+            }
+
+            /* Styles for AccountManage_Other.html */
+
+            .col-md-6 {
+                margin: 0px 0% 0px 15%;
+                form {
+                    .text-danger {
+                        color: black;
+                        margin-left: 0px;
+                    }
+
+                    /* div container */
+                    .form-group {
+                        margin: 5% 0%;
+
+                        :focus {
+                            background-color: #96dcdc;
+                        }
+
+                        /* input in form */
+                        .form-control {
+                            padding: 5px 10px;
+                            font-size: 20px;
+
+                            border: solid black 1.5px;
+
+                            width: 100%;
+                        }
+
+                        /* doesn't work with submit button */
+
+
+                        .text-danger {
+                            font-size: 25px;
+                            color: red;
+                        }
+                    }
+
+                    .btn {
+                        font-size: 23px;
+                        padding: 10px 10px;
+                        margin-top: 5%;
+                        width: 100%;
+                        background-color: gray;
+                        color: white;
+                    }
+                }
+
+                p {
+                    max-width: 50%;
+                    a {
+                        color: red;
+                        font-size: 25px;
                     }
                 }
             }

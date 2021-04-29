@@ -15,6 +15,10 @@ $WindowHoverColor: #96dcdc;
 		margin: 1% 0%;
 		align-self: center;
 
+		:focus{
+			background-color: $WindowHoverColor;
+		}
+
 		input{
 			padding: 5px 10px;
 			font-size: 20px;

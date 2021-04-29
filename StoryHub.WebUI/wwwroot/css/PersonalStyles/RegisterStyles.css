@@ -12,6 +12,9 @@
   margin: 1% 0%;
   align-self: center;
 }
+.Form .Form-inputContainer :focus {
+  background-color: #96dcdc;
+}
 .Form .Form-inputContainer input {
   padding: 5px 10px;
   font-size: 20px;

@@ -10,9 +10,13 @@ main div h4 {
 }
 main div .row {
   display: flex;
+  /* Styles for AccountManage_Other.html */
 }
 main div .row .col-md-3 {
-  border: solid 2px;
+  position: absolute;
+  top: 10%;
+  left: 2%;
+  border: solid 1.5px;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
@@ -39,7 +43,7 @@ main div .row .col-md-3 .flex-column .nav-item :hover {
 main div .row .col-md-3 .flex-column .nav-item .nav-link {
   font-size: 25px;
   font-weight: 600;
-  padding: 5% 5px;
+  padding: 5% 1%;
   width: 100%;
   text-align: center;
   color: black;
@@ -55,4 +59,47 @@ main div .row .col-md-9 .Form .Form-inputContainer .imageContainer img {
   width: 90%;
   -o-object-fit: contain;
      object-fit: contain;
+}
+main div .row .col-md-6 {
+  margin: 0px 0% 0px 15%;
+}
+main div .row .col-md-6 form {
+  /* div container */
+}
+main div .row .col-md-6 form .text-danger {
+  color: black;
+  margin-left: 0px;
+}
+main div .row .col-md-6 form .form-group {
+  margin: 5% 0%;
+  /* input in form */
+  /* doesn't work with submit button */
+}
+main div .row .col-md-6 form .form-group :focus {
+  background-color: #96dcdc;
+}
+main div .row .col-md-6 form .form-group .form-control {
+  padding: 5px 10px;
+  font-size: 20px;
+  border: solid black 1.5px;
+  width: 100%;
+}
+main div .row .col-md-6 form .form-group .text-danger {
+  font-size: 25px;
+  color: red;
+}
+main div .row .col-md-6 form .btn {
+  font-size: 23px;
+  padding: 10px 10px;
+  margin-top: 5%;
+  width: 100%;
+  background-color: gray;
+  color: white;
+}
+main div .row .col-md-6 p {
+  max-width: 50%;
+}
+main div .row .col-md-6 p a {
+  color: red;
+  font-size: 25px;
 }
