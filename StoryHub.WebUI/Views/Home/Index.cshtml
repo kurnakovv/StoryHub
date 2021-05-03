@@ -4,24 +4,56 @@
     ViewData["Title"] = "Home Page";
 }
 
-<form asp-controller="Home" asp-action="Index" method="get">
-    <div id="searchInput">
-        <input type="text" name="search" />
-        <input type="submit" value="Search" />
+<form class="main-contentForm" asp-controller="Home" asp-action="Index" method="get">
+    <!--TODO: Попробовать переместить в header.-->
+    <div class="main-contentForm-searchButtons" id="searchInput">
+        <input class="inputText" type="text" name="search" />
+        <input class="inputSubmit" type="submit" value="Find the user" />
     </div>
-
-    <h1 class="display-4">Welcome</h1>
-    <div class="row">
-
-        @foreach (Storyteller item in Model)
+    <div class="main-contentForm-content">
+        @if (Model.Any())
         {
-            <div class="col-md-4">
-                <a asp-controller="StorytellerProfile" asp-route-id="@item.Id">
-                    @item.Name
-                    <img src="~/imagesStorytellers/@Url.Content(item.Image)" style="width:150px; height:150px;" />
-                </a>
-            </div>
+            @foreach (Storyteller item in Model)
+            {
+                if (item.Id == Model.Last().Id)
+                {
+                    <div class="contentForm-lastUser">
+                        <a asp-controller="StorytellerProfile" asp-route-id="@item.Id">
+                            <div class="contentForm-user-header">
+                                <img src="~/imagesStorytellers/@Url.Content(item.Image)" style="width:150px; height:200px;" alt="UserIcon" />
+                            </div>
+                            <div class="contentForm-user-main">
+                                <span style="color: black;">@item.Name</span>
+                                <br />
+                                <span> Click on me if you want to know more! </span>
+                                <br />
+                                <span style="color: black;">@item.About</span>
+                            </div>
+                        </a>
+                    </div>
+                }
+                else
+                {
+                    <div class="contentForm-user">
+                        <a asp-controller="StorytellerProfile" asp-route-id="@item.Id">
+                            <div class="contentForm-user-header">
+                                <img src="~/imagesStorytellers/@Url.Content(item.Image)" style="width:150px; height:200px;" alt="UserIcon" />
+                            </div>
+                            <div class="contentForm-user-main">
+                                <span style="color: black;">@item.Name</span>
+                                <br />
+                                <span> Click on me if you want to know more! </span>
+                                <br />
+                                <span style="color: black;">@item.About</span>
+                            </div>
+                        </a>
+                    </div>
+                }
+            }
         }
-
+        else
+        {
+            <h1 class="errorMessage">Oops, no users yet.</h1>
+        }
     </div>
 </form>
