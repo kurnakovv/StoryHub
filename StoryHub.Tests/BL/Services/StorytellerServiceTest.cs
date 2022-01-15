@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StoryHub.BL.Db_Context;
 using StoryHub.BL.Models;
 using StoryHub.BL.Services;
 using StoryHub.BL.Services.Abstract;
@@ -66,7 +65,7 @@ namespace StoryHub.Tests.BL.Services
         public void CanCreateValidStoryteller_ReturnId()
         {
 
-            Storyteller storyteller = new Storyteller("Name", 1, true, "img.png", "About", 18)
+            Storyteller storyteller = new Storyteller("Name", true, "img.png", "About", 18)
             {
                 Id = "5050241f-a600-4d64-8634-0de904c043c1",
                 AccessFailedCount = 0,
@@ -99,7 +98,7 @@ namespace StoryHub.Tests.BL.Services
         [ExpectedException(typeof(Exception))]
         public async Task CannotCreateStorytellerIfAlreadyExists_ReturnException()
         {
-            Storyteller storyteller = new Storyteller("Name", 1, true, "img.png", "About", 18)
+            Storyteller storyteller = new Storyteller("Name", true, "img.png", "About", 18)
             {
                 Id = "5050241f-a600-4d64-8634-0de904c043c1",
                 AccessFailedCount = 0,
@@ -130,7 +129,7 @@ namespace StoryHub.Tests.BL.Services
         [TestMethod]
         public void CanDeleteStorytellerByValidId()
         {
-            Storyteller storyteller = new Storyteller("Name", 0, true, "img.png", "About", 18)
+            Storyteller storyteller = new Storyteller("Name", true, "img.png", "About", 18)
             {
                 Id = "5050241f-a600-4d64-8634-0de904c043c1",
                 AccessFailedCount = 0,
@@ -159,7 +158,7 @@ namespace StoryHub.Tests.BL.Services
         [TestMethod]
         public void CanGetStorytellerByValidId()
         {
-            Storyteller storyteller = new Storyteller("Name", 0, true, "img.png", "About", 18)
+            Storyteller storyteller = new Storyteller("Name", true, "img.png", "About", 18)
             {
                 Id = "5050241f-a600-4d64-8634-0de904c043c1",
                 AccessFailedCount = 0,
@@ -193,7 +192,7 @@ namespace StoryHub.Tests.BL.Services
         [ExpectedException(typeof(KeyNotFoundException))]
         public void CannotGetStorytellerByInvalidId_ReturnException()
         {
-            Storyteller storyteller = new Storyteller("Name", 0, true, "img.png", "About", 18)
+            Storyteller storyteller = new Storyteller("Name", true, "img.png", "About", 18)
             {
                 Id = null,
                 AccessFailedCount = 0,
@@ -220,7 +219,7 @@ namespace StoryHub.Tests.BL.Services
         [TestMethod]
         public void CanUpdateValidStoryteller_ReturnStoryteller()
         {
-            Storyteller storyteller = new Storyteller("Name", 0, true, "img.png", "About", 18)
+            Storyteller storyteller = new Storyteller("Name", true, "img.png", "About", 18)
             {
                 Id = "5050241f-a600-4d64-8634-0de904c043c1",
                 AccessFailedCount = 0,
@@ -264,7 +263,7 @@ namespace StoryHub.Tests.BL.Services
         [TestMethod]
         public void CanFindStorytellerByValidId_ReturnStoryteller()
         {
-            Storyteller storyteller = new Storyteller("Name", 0, true, "img.png", "About", 18)
+            Storyteller storyteller = new Storyteller("Name", true, "img.png", "About", 18)
             {
                 Id = "5050241f-a600-4d64-8634-0de904c043c1",
                 AccessFailedCount = 0,
@@ -297,7 +296,7 @@ namespace StoryHub.Tests.BL.Services
         [TestMethod]
         public void CanFindStorytellerByValidUserName_ReturnStoryteller()
         {
-            Storyteller storyteller = new Storyteller("Name", 0, true, "img.png", "About", 18)
+            Storyteller storyteller = new Storyteller("Name", true, "img.png", "About", 18)
             {
                 Id = "5050241f-a600-4d64-8634-0de904c043c1",
                 AccessFailedCount = 0,

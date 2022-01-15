@@ -17,13 +17,11 @@ namespace StoryHub.BL.Models
 
         [Required]
         [Range(0, int.MaxValue)]
-        [DefaultValue(0)]
-        public int QuantityStories { get; private set; }
+        public int QuantityStories { get; set; }
 
         [DefaultValue(false)]
         public bool Gender { get; private set; }
 
-        [DefaultValue("")] // TODO: Add default img
         public string Image { get; private set; }
 
         [StringLength(50, ErrorMessage = "Information about you cannot be more than 30 characters")]
@@ -33,15 +31,15 @@ namespace StoryHub.BL.Models
         public int Age { get; private set; }
 
         public Storyteller() { }
+
         public Storyteller(string name,
-                           int quantityStories,
                            bool gender,
                            string image,
                            string about,
                            int age)
         {
             Name = name;
-            QuantityStories = quantityStories;
+            QuantityStories = 0;
             Gender = gender;
             Image = image;
             About = about;

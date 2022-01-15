@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Главная страница NotSocialNetwork">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS  -->
+    <link rel="stylesheet" href="../css/PersonalStyles/RegisterStyles.css">
+    <link rel="stylesheet" href="../css/PersonalStyles/AccountManageStyles.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="nav-container-element">
+                    <a class="titleReference" href="/">StoryHub</a>
+                </div>
+            </div>
+
+            <div class="nav-container">
+                <div class="nav-container-element">
+                    <a href="AccountManage.html" class="nav-container--ref" asp-area="Identity" asp-page="/Account/Manage/Index"
+                        title="Manage">Hello @User.Identity.Name!</a>
+                </div>
+                <form style="border-color: #ffc0c0;" class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
+                    asp-route-returnUrl="@Url.Action(" Index", "Home" , new { area="" })">
+                    <button class="navButton" type="submit">Logout</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="pb-3">
+        <h2>Manage your account</h2>
+        <div>
+            <h4>Change your account settings</h4>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item"><a class="nav-link active" id="profile"
+                                href="/Identity/Account/Manage">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" id="email"
+                                href="/Identity/Account/Manage/Email">Email</a></li>
+                        <li class="nav-item"><a class="nav-link" id="change-password"
+                                href="/Identity/Account/Manage/ChangePassword">Password</a></li>
+                        <li class="nav-item"><a class="nav-link" id="two-factor"
+                                href="/Identity/Account/Manage/TwoFactorAuthentication">Two-factor authentication</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" id="personal-data"
+                                href="/Identity/Account/Manage/PersonalData">Personal data</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9">
+                    <link rel="stylesheet" href="/css/PersonalStyles/RegisterStyles.css">
+                    <link rel="stylesheet" href="/css/PersonalStyles/AccountManageStyles.css">
+
+                    <form class="Form" id="profile-form" method="post" enctype="multipart/form-data"
+                        novalidate="novalidate">
+
+                        <div class="Form-inputContainer">
+                            <!-- src="~/imagesStorytellers/@Model.Input.Image" /> -->
+                            <div class="imageContainer">
+                                <img src="../css/images/DefaultImgOfUser.png" alt="UserLogo">
+                            </div>
+                            <label class="fileLabel" for="imageFile">New avatar?</label>
+                            <input class="inputFile" id="imageFile" type="file" name="files">
+                            <span class="field-validation-valid" data-valmsg-for="Input.Image"
+                                data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="Form-inputContainer">
+                            <label for="Input_About">About</label>
+                            <input class="form-control" placeholder="About..." type="text" id="Input_About"
+                                name="Input.About" value="INFO">
+                        </div>
+                        <div class="Form-inputContainer">
+                            <label for="Input_Gender">Gender</label>
+                            <input type="checkbox" class="form-control" checked="checked" data-val="true"
+                                data-val-required="The Gender field is required." id="Input_Gender" name="Input.Gender"
+                                value="true">
+                        </div>
+                        <div class="Form-inputContainer">
+                            <label for="Input_Age">Age</label>
+                            <input type="number" class="form-control" placeholder="Age" data-val="true"
+                                data-val-required="The Age field is required." id="Input_Age" name="Input.Age"
+                                value="18">
+                        </div>
+                        <div class="Form-inputContainer">
+                            <label for="Input_PhoneNumber">Phone number</label>
+                            <input class="form-control" placeholder="Phone number" type="tel" data-val="true"
+                                data-val-phone="The Phone number field is not a valid phone number."
+                                id="Input_PhoneNumber" name="Input.PhoneNumber" value="">
+                        </div>
+                        <button class="submitButton" id="update-profile-button" type="submit">
+                            Update
+                        </button>
+                        <input name="__RequestVerificationToken" type="hidden"
+                            value="CfDJ8CKgvHKBKbFGkE_8POyfnD5f-ec6zPNwZlSdjyf5ZphQhUAb1zSS_xjRYYtWrKt-8Ff4SABNyMS1jrzrBwaJngGwUVsjI2BKGp7SJBEhR-QZPBTeihUmVw1n36EmUVuGYl0UxEBeR4T8xCNaA1-4eVnkDZg93H4WkkGbOjUbs0zyHX_44l3KnMMIWES85DsPrg"><input
+                            name="Input.Gender" type="hidden" value="false">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            &copy; 2021 - StoryHub - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+</body>
+
+</html>

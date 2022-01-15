@@ -40,6 +40,10 @@ namespace StoryHub.WebUI
 
             services.AddDefaultIdentity<Storyteller>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<AppDbContext>();
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+            });
             
             services.AddControllersWithViews();
             services.AddRazorPages();

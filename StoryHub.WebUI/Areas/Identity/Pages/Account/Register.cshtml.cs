@@ -102,10 +102,10 @@ namespace StoryHub.WebUI.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 string imageName = AddImage();
-                var user = new Storyteller(Input.Name, 0, Input.Gender, imageName, Input.About, Input.Age)
+                var user = new Storyteller(Input.Name, Input.Gender, imageName, Input.About, Input.Age)
                 {
                     UserName = Input.Name,
-                    Email = Input.Email
+                    Email = Input.Email.ToLower(),
                 };
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
@@ -118,7 +118,7 @@ namespace StoryHub.WebUI.Areas.Identity.Pages.Account
                     var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
-                        values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
+                        values: new { area = "Identity", userId = user.Id, code, returnUrl },
                         protocol: Request.Scheme);
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
@@ -126,7 +126,7 @@ namespace StoryHub.WebUI.Areas.Identity.Pages.Account
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl });
                     }
                     else
                     {
@@ -147,12 +147,12 @@ namespace StoryHub.WebUI.Areas.Identity.Pages.Account
         private string AddImage()
         {
             const string defaultImage = "defaultImageStoryteller.jpg";
-            var newImageName = string.Empty;
+            string newImageName;
             var imgExtensions = new List<string> { ".jpg", ".png", ".jpeg", ".gif"};
 
             if (HttpContext.Request.Form.Files != null)
             {
-                var imageName = string.Empty;
+                string imageName;
 
                 var files = HttpContext.Request.Form.Files;
 
