@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Главная страница NotSocialNetwork">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS  -->
+    <link rel="stylesheet" href="../css/PersonalStyles/RegisterStyles.css">
+    <link rel="stylesheet" href="../css/PersonalStyles/AccountManageStyles.css">
+</head>
+
+<body>
+    <!-- 
+        The page that this layout was based on is automatically generated 
+        and cannot be modified, but it can be styled according to existing classes.
+    --> 
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="nav-container-element">
+                    <a class="titleReference" href="/">StoryHub</a>
+                </div>
+            </div>
+
+            <div class="nav-container">
+                <div class="nav-container-element">
+                    <a href="AccountManage.html" class="nav-container--ref" asp-area="Identity"
+                        asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+                </div>
+                <form style="border-color: #ffc0c0;" class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
+                    asp-route-returnUrl="@Url.Action(" Index", "Home" , new { area="" })">
+                    <button class="navButton" type="submit">Logout</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="pb-3">
+        <h2>Manage your account</h2>
+        <div>
+            <h4>Change your account settings</h4>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item"><a class="nav-link active" id="profile"
+                                href="/Identity/Account/Manage">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" id="email"
+                                href="/Identity/Account/Manage/Email">Email</a></li>
+                        <li class="nav-item"><a class="nav-link" id="change-password"
+                                href="/Identity/Account/Manage/ChangePassword">Password</a></li>
+                        <li class="nav-item"><a class="nav-link" id="two-factor"
+                                href="/Identity/Account/Manage/TwoFactorAuthentication">Two-factor authentication</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" id="personal-data"
+                                href="/Identity/Account/Manage/PersonalData">Personal data</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-9">
+                    <link rel="stylesheet" href="/css/PersonalStyles/RegisterStyles.css">
+                    <link rel="stylesheet" href="/css/PersonalStyles/AccountManageStyles.css">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form id="email-form" method="post" novalidate="novalidate">
+                                <div class="text-danger validation-summary-valid" data-valmsg-summary="true">
+                                    <ul>
+                                        <li> text-danger ResultText</li>
+                                    </ul>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Email">Email</label>
+                                    <input class="form-control" disabled="" type="text" id="Email" name="Email"
+                                        value="coldater@mail.ru">
+                                    <button id="email-verification" type="submit" class="btn btn-link"
+                                        formaction="/Identity/Account/Manage/Email?handler=SendVerificationEmail">Send
+                                        verification email</button>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Input_NewEmail">New email</label>
+                                    <input class="form-control" type="email" data-val="true"
+                                        data-val-email="The New email field is not a valid e-mail address."
+                                        data-val-required="The New email field is required." id="Input_NewEmail"
+                                        name="Input.NewEmail" value="coldater@mail.ru">
+                                    <span class="text-danger field-validation-valid" data-valmsg-for="Input.NewEmail"
+                                        data-valmsg-replace="true">Text Danger</span>
+                                </div>
+                                <button id="change-email-button" type="submit" class="btn btn-primary"
+                                    formaction="/Identity/Account/Manage/Email?handler=ChangeEmail">Change
+                                    email</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            &copy; 2021 - StoryHub - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+</body>
+
+</html>

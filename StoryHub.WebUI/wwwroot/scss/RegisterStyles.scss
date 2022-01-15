@@ -1,0 +1,57 @@
+﻿@import "../PersonalStyles/MainStyles.css";
+
+$WindowHoverColor: #96dcdc;
+
+.Form{
+	display: flex;
+	flex-direction: column;
+
+	.greeting{
+		align-self: center;
+		font-size: 30px;
+	}
+	.Form-inputContainer{
+		width: 100%;
+		margin: 1% 0%;
+		align-self: center;
+
+		:focus{
+			background-color: $WindowHoverColor;
+		}
+
+		input{
+			padding: 5px 10px;
+			font-size: 20px;
+
+			border: solid black 1.5px;
+
+			width: 100%;
+		}
+		.inputFile{
+			display: none;
+		}
+		.fileLabel{
+			display: block;
+
+			padding: 20px 80px;
+			margin-top: 2%;
+
+			background-color: $WindowHoverColor;
+
+			text-align: center;
+		}
+
+		.text-danger{
+			display: flex;
+		}
+	}
+	.submitButton{
+		font-size: 30px;
+		padding: 20px 80px;
+
+		margin-top: 5%;
+		width: 100%;
+		background-color: gray;
+		color: white;
+	}
+}

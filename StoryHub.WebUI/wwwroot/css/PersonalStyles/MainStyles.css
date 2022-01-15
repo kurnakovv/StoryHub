@@ -1,0 +1,127 @@
+@import "../NullStyle.css";
+body {
+  font-family: arial;
+  display: flex;
+  flex-direction: column;
+  background-color: #dbdbdb;
+  font-size: 20px;
+  min-height: 100vh;
+  height: 100%;
+}
+body header {
+  margin-bottom: 2%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #dbdbdb;
+}
+body header nav {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+body header nav .nav-container {
+  display: flex;
+}
+body header nav .nav-container :hover {
+  background-color: #96dcdc;
+}
+body header nav .nav-container .nav-container-element {
+  display: flex;
+  align-items: center;
+  padding: 11px 11px;
+}
+body header nav .nav-container .nav-container-element :active {
+  background-color: #96dcdc;
+}
+body header nav .nav-container .nav-container-element .titleReference {
+  font-size: 25px;
+  font-weight: 600;
+  text-decoration: none;
+  color: black;
+}
+body header nav .nav-container .nav-container-element .nav-container--ref {
+  text-decoration: none;
+  color: black;
+}
+body header nav .nav-container form {
+  display: flex;
+  background-color: #ffc0c0;
+}
+body header nav .nav-container form .navButton {
+  padding: 0px 5px;
+  background-color: #ffc0c0;
+  font-weight: 600;
+  font-size: 17px;
+}
+body main {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  margin-bottom: 5%;
+  min-height: -webkit-max-content;
+  min-height: -moz-max-content;
+  min-height: max-content;
+}
+body main .main-contentForm {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+body main .main-contentForm .main-contentForm-searchButtons {
+  display: flex;
+  align-self: center;
+  margin-bottom: 2%;
+}
+body main .main-contentForm .main-contentForm-searchButtons :hover {
+  background-color: #96dcdc;
+}
+body main .main-contentForm .main-contentForm-searchButtons .inputText {
+  font-size: 15px;
+  padding: 5px 15px;
+}
+body main .main-contentForm .main-contentForm-searchButtons .inputSubmit {
+  padding: 0px 8px;
+  font-size: 15px;
+}
+body main .main-contentForm .errorMessage {
+  align-self: center;
+}
+body main .main-contentForm .main-contentForm-content {
+  display: inline-flex;
+  flex-direction: column;
+}
+body main .main-contentForm .main-contentForm-content .contentForm-user {
+  border-bottom: 2px inset #9b9b9b;
+}
+body main .main-contentForm .main-contentForm-content .contentForm-user a {
+  display: flex;
+  padding: 4vh 0px;
+}
+body main .main-contentForm .main-contentForm-content .contentForm-user a .contentForm-user-main {
+  font-family: "Georgia";
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  color: black;
+}
+body main .main-contentForm .main-contentForm-content .contentForm-lastUser a {
+  display: flex;
+  padding: 4vh 0px;
+}
+body main .main-contentForm .main-contentForm-content .contentForm-lastUser a .contentForm-user-main {
+  font-family: "Georgia";
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  color: black;
+}
+body footer {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+  min-height: 7%;
+  padding-top: 10px;
+  font-size: 15px;
+}

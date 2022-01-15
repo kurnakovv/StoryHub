@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Главная страница NotSocialNetwork">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS  -->
+    <link rel="stylesheet" href="../css/PersonalStyles/RegisterStyles.css">
+    <link rel="stylesheet" href="../css/PersonalStyles/AccountManageStyles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="nav-container-element">
+                    <a class="titleReference" href="/">StoryHub</a>
+                </div>
+            </div>
+
+            <div class="nav-container">
+                <div class="nav-container-element">
+                    <a href="Login.html" class="nav-container--ref" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                </div>
+                <div class="nav-container-element">
+                    <a href="Register.html" class="nav-container--ref" asp-area="Identity" asp-page="/Account/Register">Registration</a>
+                </div>
+            </div>
+            <!-- Is SignedIn Elements
+                <div class="nav-container">
+                    <div class="nav-container-element">
+                        <a href="AccountManage.html" class="nav-container--ref" asp-area="Identity" asp-page="/Account/Manage/Index"
+                            title="Manage">Hello @User.Identity.Name!</a>
+                    </div>
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
+                        asp-route-returnUrl="@Url.Action(" Index", "Home" , new { area="" })">
+                        <button class="navButton" type="submit">Logout</button>
+                    </form>
+                </div>
+            -->
+            <!-- Is not SignedIn Elements 
+                <div class="nav-container">
+                    <div class="nav-container-element">
+                        <a href="Login.html" class="nav-container--ref" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    </div>
+                    <div class="nav-container-element">
+                        <a href="Register.html" class="nav-container--ref" asp-area="Identity" asp-page="/Account/Register">Registration</a>
+                    </div>
+                </div>
+            -->
+        </nav>
+    </header>
+
+    <main>
+        <form class="Form" asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
+            <h4 class="greeting">Создайте свой аккаунт!</h4>
+            <br>
+            <div class="Form-inputContainer">
+                <!-- Возможно label, это можно убрать. -->
+                <label asp-for="Input.Name"></label>
+                <input asp-for="Input.Name" placeholder="Name" />
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+            <div class="Form-inputContainer">
+                <label asp-for="Input.Email"></label>
+                <input type="email" asp-for="Input.Email" placeholder="Email" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="Form-inputContainer">
+                <label asp-for="Input.Password"></label>
+                <input type="password" asp-for="Input.Password" placeholder="Password" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="Form-inputContainer">
+                <label asp-for="Input.ConfirmPassword"></label>
+                <input type="password" asp-for="Input.ConfirmPassword" placeholder="Подтвердите пароль" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="Form-inputContainer">
+                <label asp-for="Input.About"></label>
+                <input asp-for="Input.About" placeholder="Вкратце о вас" />
+                <span asp-validation-for="Input.About" class="text-danger"></span>
+            </div>
+            <div class="Form-inputContainer">
+                <label asp-for="Input.Gender"></label>
+                <input type="radio" value="true" asp-for="Input.Gender" />
+                <span asp-validation-for="Input.Gender" class="text-danger"></span>
+            </div>
+            <div class="Form-inputContainer">
+                <label asp-for="Input.Age"></label>
+                <input type="number" asp-for="Input.Age" placeholder="И возраст" />
+                <span asp-validation-for="Input.Age" class="text-danger"></span>
+            </div>
+            <div class="Form-inputContainer">
+                <label class="fileLabel" for="file" asp-for="Input.Image">
+                    <span asp-validation-for="Input.Image">Ваш аватар...</span>
+                </label>
+                <input class="inputFile" id="file" asp-for="Input.Image" type="file" name="files">
+            </div>
+            <button class="submitButton" type="submit">Зарегистрироваться</button>
+        </form>
+    </main>
+
+    <footer>
+        <div class="container">
+            &copy; 2021 - StoryHub - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+</body>
+</html>
+<!-- <div class="col-md-6 col-md-offset-2">
+    <section>
+        <h4>Use another service to register.</h4>
+        <hr />
+        @{
+        if ((Model.ExternalLogins?.Count ?? 0) == 0)
+        {
+        <div>
+            <p>
+                There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                for details on setting up this ASP.NET application to support logging in via external services.
+            </p>
+        </div>
+        }
+        else
+        {
+        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+            <div>
+                <p>
+                    @foreach (var provider in Model.ExternalLogins)
+                    {
+                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                    }
+                </p>
+            </div>
+        </form>
+        }
+        }
+    </section>
+</div>
+
+    @section Scripts {
+<partial name="_ValidationScriptsPartial" />
+    }
+-->
